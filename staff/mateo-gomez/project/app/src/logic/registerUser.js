@@ -10,6 +10,7 @@ const registerUser = (name, surname, username, email, password, passwordRepeat) 
     validate.password(password)
     validate.passwordMatch(password, passwordRepeat)
 
+
     return fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: 'POST',
         headers: {

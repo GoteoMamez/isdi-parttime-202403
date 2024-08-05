@@ -2,7 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import registerUserHandler from './handlers/registerUserHandler.js'
+import { registerUserHandler, authenticateUserHandler } from './handlers/index.js'
 
 
 const { MONGODB_URL, PORT } = process.env
@@ -19,7 +19,13 @@ mongoose.connect(MONGODB_URL)
 
         api.get('/', (req, res) => res.send('Hello World!'))
 
-        api.post('users', jsonBodyParser, registerUserHandler)
+        api.post('/users', jsonBodyParser, registerUserHandler)
+
+        api.post('/users/auth', jsonBodyParser, authenticateUserHandler)
+
+
+
+        api.listen(PORT, () => console.log(`API running on port ${PORT}`));
 
 
     })

@@ -55,18 +55,19 @@ function Register({ onLoginClick, onUserRegistered }) {
         <Title className='ViewTitle'>Register</Title>
 
         <FormWithFeedback onSubmit={handleRegisterSubmit}>
-            <Field id='name' type='text' placeholder='name'>name</Field>
-            <Field id='surname' type='text' placeholder='surname'>surname</Field>
-            <Field id='email' type='email' placeholder='E-Mail'>E-Mail</Field>
-            <Field id='username' type='text' placeholder='username'>username</Field>
-            <Field id='password' type='password' placeholder='password'>password</Field>
-            <Field id='passwordRepeat' type='password' placeholder='Repeat Password'>passwordRepeat</Field>
+            <Field id='name' type='text' placeholder='Pedro'>Name</Field>
+            <Field id='surname' type='text' placeholder='Pérez'>Surname</Field>
+            <Field id='email' type='email' placeholder='usuario@gmail.com'>Email</Field>
+            <Field id='username' type='text' placeholder='username'>Username</Field>
+            <Field id='password' type='password' placeholder='password'>Password</Field>
+            <Field id='passwordRepeat' type='password' placeholder='Repeat Password'>Repeat Password</Field>
 
             <SubmitButton type='submit'>Register</SubmitButton>
 
         </FormWithFeedback>
 
-        <Link onClick={handleLoginClick}>Login</Link>
+        <Link onClick={handleLoginClick}>Already have an account?
+            Login now</Link>
 
     </View>
 

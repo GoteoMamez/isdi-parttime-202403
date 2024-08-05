@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+.MainTitle {
+    font-family: "Langar", system-ui;
+    color: white;
+    font-size: 3rem;
+}
