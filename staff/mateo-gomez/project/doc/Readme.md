@@ -11,23 +11,33 @@ This app connects tattoo artists from all locations, promoting the creation of p
 
 ### Use cases
 
-Host
+User
 - Edit profile
-- Create Host Post for the Host Board
+- Add photo
+- Add SocialMedia Link
+- View chats
+- Send message in chat
+- Choose location
+- View profile
+- View PostList
 - Delete Post
-- List Post
-- Reply message
+- View post
+
+
+
+Host
+- Create Host Post for the Host Board
 
 Guest
-- Edit profile
 - Create Guest Posts for the Guest Board
-- Search Guest by location
-- Send message to Host
+- Search Host by location
 
 
 #### Version 0.1
+Host/Guest
 
-- Add location?
+- Add location with geo
+- API of ubications
 
 
 ### UI Design
@@ -43,8 +53,8 @@ Guest
 
 ### Modules
 
-- App
-- API
+- app
+- api
 - com
 - doc
 
@@ -61,30 +71,36 @@ User
 - password (string, required, hashed)
 
 
-Post Host
+HostPost
 
 - id (auto)
 - author (User.id)
 - image (string)
 - description (string)
 - location/city (string)
-- Age (string)
-- Offer (string)
+- age (string)
+- offer (string)
 
-Post Guest
+ GuestPost
 
 - id (auto)
 - author (User.id)
 - image (string)
 - description (string)
-- Date (date)
-- From-To (string-string)
-
-Host PostList
-
-- Posts from host
+- date (date)
+- fromLocation (string)
+- toLocation (string)
 
 
-Guest PostList
 
-- Post from guest
+Chat 
+- id(auto)
+- users([User.id])
+- messages([Message])
+
+
+Message
+- id (auto)
+- sender(User.id)
+- text (string)
+- date (Date)
