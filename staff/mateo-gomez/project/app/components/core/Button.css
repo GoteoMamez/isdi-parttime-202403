@@ -15,3 +15,13 @@
     color: rgb(15, 15, 15);
     margin: 2rem;
 }
+
+.LogoutButton {
+    color: white;
+    width: 4rem;
+    background: black;
+    margin-top: 0.2rem;
+    padding-left: 0rem;
+    display: flex;
+    align-items: center;
+}
