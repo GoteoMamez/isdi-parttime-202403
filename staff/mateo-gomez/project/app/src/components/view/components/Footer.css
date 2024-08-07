@@ -1,0 +1,24 @@
+.Footer {
+    background-color: rgb(84, 84, 84);
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    box-sizing: content-box;
+    height: 4rem;
+    z-index: 100;
+    left: 0;
+
+
+
+}
+
+.FooterButton {
+    display: flex;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: x-large;
+    margin: 0;
+}

@@ -90,6 +90,7 @@ HostPost
 - date (date)
 - fromLocation (string)
 - toLocation (string)
+- age (string)
 
 
 

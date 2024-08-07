@@ -4,6 +4,7 @@ import Heading from "../../../components/core/Heading"
 import Header from "./components/Header"
 import logic from "../../logic/index"
 import Button from "../../../components/core/Button"
+import Footer from "./components/Footer"
 
 
 function Home({ onUserLoggedOut }) {
@@ -18,6 +19,16 @@ function Home({ onUserLoggedOut }) {
 
         onUserLoggedOut()
     }
+
+
+    const handleCreatePostClick = () => {
+        setView('createPost')
+    }
+
+    const handlePostCreated = () => {
+        setView('')
+    }
+
 
     useEffect(() => {
         try {
@@ -54,6 +65,7 @@ function Home({ onUserLoggedOut }) {
         <View tag="main">
 
         </View>
+        <Footer onCreatePostClick={handleCreatePostClick} className='Footer' >+</Footer>
     </View>
 }
 
