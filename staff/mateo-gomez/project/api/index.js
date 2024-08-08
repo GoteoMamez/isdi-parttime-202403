@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import { registerUserHandler, authenticateUserHandler, getUserNameHandler } from './handlers/index.js'
+import createGuestPostHandler from './handlers/createGuestPostHandler.js'
 
 
 const { MONGODB_URL, PORT } = process.env
@@ -25,6 +26,7 @@ mongoose.connect(MONGODB_URL)
 
         api.get('/users/:userId', jsonBodyParser, getUserNameHandler)
 
+        api.post('/posts/guest', jsonBodyParser, createGuestPostHandler)
 
         api.listen(PORT, () => console.log(`API running on port ${PORT}`));
 
