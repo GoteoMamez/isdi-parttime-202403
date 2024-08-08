@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
+
 import View from "../../../components/library/View"
 import Heading from "../../../components/core/Heading"
 import Header from "./components/Header"
 import logic from "../../logic/index"
 import Button from "../../../components/core/Button"
 import Footer from "./components/Footer"
+import CreatePostForm from "./components/CreatePostForm"
+import PostTypeSelection from "./components/PostTypeSelection"
 
 
 function Home({ onUserLoggedOut }) {
@@ -12,6 +15,7 @@ function Home({ onUserLoggedOut }) {
 
     const [name, setName] = useState('')
     const [view, setView] = useState('')
+    const [postType, setPostType] = useState(null)
 
 
     const handleLogout = () => {
@@ -22,7 +26,18 @@ function Home({ onUserLoggedOut }) {
 
 
     const handleCreatePostClick = () => {
+        setView('postTypeSelection')
+    }
+
+    const handlePostTypeSelection = (type) => {
+        console.log('Post Type Selected', type)
+        setPostType(type)
+
         setView('createPost')
+    }
+
+    const handleCancelCreatePost = () => {
+        setView('')
     }
 
     const handlePostCreated = () => {
@@ -63,6 +78,17 @@ function Home({ onUserLoggedOut }) {
             </div>
         </Header>
         <View tag="main">
+            {view === 'postTypeSelection' && (
+                <PostTypeSelection onSelectType={handlePostTypeSelection}></PostTypeSelection>
+            )}
+            {view === 'createPost' && postType && (
+                <CreatePostForm
+                    postType={postType}
+                    onCancelCreatePostClick={handleCancelCreatePost}
+                    onHostPostCreated={handlePostCreated}
+                    onGuestPostCreated={handlePostCreated}
+                > </CreatePostForm>
+            )}
 
         </View>
         <Footer onCreatePostClick={handleCreatePostClick} className='Footer' >+</Footer>

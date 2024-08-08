@@ -26,3 +26,9 @@
     align-items: center;
     cursor: pointer;
 }
+
+.PostType {
+    height: 6rem;
+    font-size: xx-large;
+    color: white;
+}

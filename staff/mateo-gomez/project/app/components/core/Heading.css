@@ -16,3 +16,9 @@
     position: absolute;
     padding: 2rem;
 }
+
+.CreatePostFormHeading {
+    color: white;
+    font-family: "Langar", system-ui;
+
+}

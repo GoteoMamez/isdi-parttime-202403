@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+
+.PostTypeSelection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 10rem;
+}
+
+.PostTypeSelectionHeading {
+    color: white;
+    font-family: "Langar", system-ui;
+
+}
