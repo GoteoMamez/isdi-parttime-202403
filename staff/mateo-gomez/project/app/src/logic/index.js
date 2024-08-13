@@ -5,6 +5,9 @@ import getUserName from "./getUserName";
 import logoutUser from "./logoutUser";
 import createGuestPost from "./createGuestPost";
 import createHostPost from "./createHostPost";
+import getHostPost from "./getHostPosts";
+import getGuestPost from "./getGuestPosts";
+import getUserId from "./getUserId";
 
 const logic = {
     registerUser,
@@ -13,7 +16,10 @@ const logic = {
     getUserName,
     logoutUser,
     createGuestPost,
-    createHostPost
+    createHostPost,
+    getHostPost,
+    getGuestPost,
+    getUserId
 }
 
 export default logic

@@ -10,7 +10,7 @@ const AGE_REGEX = /^[0-9]+$/
 
 function validateName(name, explain = 'name') {
     if (typeof name !== 'string' || !NAME_REGEX.test(name))
-        throw new ContentError(`${explain} name is not valid`)
+        throw new ContentError(`${explain} is not valid`)
 }
 
 function validateSurname(surname, explain = 'surname') {

@@ -8,6 +8,7 @@ import Button from "../../../components/core/Button"
 import Footer from "./components/Footer"
 import CreatePostForm from "./components/CreatePostForm"
 import PostTypeSelection from "./components/PostTypeSelection"
+import PostList from '../../components/view/components/PostList'
 
 
 function Home({ onUserLoggedOut }) {
@@ -16,6 +17,7 @@ function Home({ onUserLoggedOut }) {
     const [name, setName] = useState('')
     const [view, setView] = useState('')
     const [postType, setPostType] = useState(null)
+    const [postListRefreshStamp, setPostListRefreshStamp] = useState(0)
 
 
     const handleLogout = () => {
@@ -41,6 +43,8 @@ function Home({ onUserLoggedOut }) {
     }
 
     const handlePostCreated = () => {
+        setPostListRefreshStamp(Date.now())
+
         setView('')
     }
 
@@ -78,6 +82,7 @@ function Home({ onUserLoggedOut }) {
             </div>
         </Header>
         <View tag="main">
+            <PostList refreshStamp={postListRefreshStamp}></PostList>
             {view === 'postTypeSelection' && (
                 <PostTypeSelection onSelectType={handlePostTypeSelection}></PostTypeSelection>
             )}
