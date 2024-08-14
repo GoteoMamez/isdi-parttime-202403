@@ -8,6 +8,9 @@
     position: fixed;
     width: 100%;
     top: 10rem;
+    background: black;
+    width: 30rem;
+    border-radius: 3rem;
 }
 
 .PostTypeSelectionHeading {

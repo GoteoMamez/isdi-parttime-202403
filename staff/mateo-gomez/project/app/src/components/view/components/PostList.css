@@ -2,10 +2,6 @@
     display: flex;
     position: center;
     bottom: 0;
-    width: 80%;
-    left: 0;
     box-sizing: border-box;
     background-color: transparent;
-    top: 8rem;
-    margin-bottom: 2rem;
 }

@@ -19,7 +19,7 @@ function PostList({ refreshStamp }) {
     const loadPosts = () => {
         try {
             logic.getHostPost()
-                .then(posts => setPosts(posts))
+                .then(posts => setPosts(posts.reverse()))
                 .catch((error) => {
                     console.error(error)
 
