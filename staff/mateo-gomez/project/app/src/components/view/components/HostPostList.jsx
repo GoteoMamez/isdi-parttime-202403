@@ -1,17 +1,17 @@
 import View from "../../../../components/library/View";
 import Post from "./Post";
-import './PostList.css'
+import './HostPostList.css'
 
 import logic from "../../../logic";
 import { useEffect, useState } from "react";
 
-function PostList({ refreshStamp }) {
-    console.log('PostList -> render')
+function HostPostList({ refreshStamp }) {
+    console.log('HostPostList -> render')
 
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        console.log('PostList -> useEffect')
+        console.log('HostPostList -> useEffect')
 
         loadPosts()
     }, [refreshStamp])
@@ -36,9 +36,9 @@ function PostList({ refreshStamp }) {
 
     const handlePostDeleted = () => loadPosts()
 
-    return <View tag="section" className='PostList'>
+    return <View tag="section" className='HostPostList'>
         {posts.map(post => <Post key={post.id} post={post} onPostDeleted={handlePostDeleted}></Post>)}
     </View>
 }
 
-export default PostList
+export default HostPostList

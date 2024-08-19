@@ -8,8 +8,8 @@ import Button from "../../../components/core/Button"
 import Footer from "./components/Footer"
 import CreatePostForm from "./components/CreatePostForm"
 import PostTypeSelection from "./components/PostTypeSelection"
-import PostList from '../../components/view/components/PostList'
-
+import HostPostList from "./components/HostPostList"
+import PostListBoardSelection from "./components/PostListBoardSelection"
 
 function Home({ onUserLoggedOut }) {
     console.log('Home -> render')
@@ -80,9 +80,12 @@ function Home({ onUserLoggedOut }) {
                 <Heading className='UserNameHeading' level='3'>{name}</Heading>
                 <Button className='Button LogoutButton' onClick={handleLogout}>Logout</Button>
             </div>
+
         </Header>
+
+        <PostListBoardSelection></PostListBoardSelection>
         <View tag="main">
-            <PostList refreshStamp={postListRefreshStamp}></PostList>
+            <HostPostList refreshStamp={postListRefreshStamp}></HostPostList>
             {view === 'postTypeSelection' && (
                 <PostTypeSelection onSelectType={handlePostTypeSelection}></PostTypeSelection>
             )}

@@ -1,0 +1,38 @@
+.PostListBoardSelection {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    margin-top: 10vh;
+    top: 0;
+    width: 100%;
+    background: black;
+    z-index: 100;
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+}
+
+.HostBoardButton,
+.GuestBoardButton {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    width: 15vh;
+}
+
+.HostBoardButton {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    background: rgb(22, 116, 146);
+    color: white;
+}
+
+.GuestBoardButton {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background: rgb(78, 145, 183);
+    color: white;
+}
