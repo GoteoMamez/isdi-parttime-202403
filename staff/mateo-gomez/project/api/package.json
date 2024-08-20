@@ -8,7 +8,9 @@
     "start": "node .",
     "watch": "node --watch",
     "inspect": "node --inspect-brk",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-inspect": "mocha --inspect-brk logic/*.spec.js",
+    "test-coverage": "c8 --experimental-monocart --reporter=html --reporter=text mocha logic/*.spec.js"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +23,11 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1"
+  },
+  "devDependencies": {
+    "c8": "^10.1.2",
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "monocart-coverage-reports": "^2.10.3"
   }
 }

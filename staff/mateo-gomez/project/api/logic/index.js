@@ -4,6 +4,9 @@ import getUserName from "./getUserName.js";
 import createGuestPost from "./createGuestPost.js";
 import createHostPost from "./createHostPost.js";
 import getHostPosts from "./getHostPosts.js";
+import getGuestPosts from "./getGuestPosts.js";
+import deleteHostPost from "./deleteHostPost.js";
+import deleteGuestPost from "./deleteGuestPost.js";
 
 const logic = {
     authenticateUser,
@@ -11,7 +14,10 @@ const logic = {
     getUserName,
     createGuestPost,
     createHostPost,
-    getHostPosts
+    getHostPosts,
+    getGuestPosts,
+    deleteHostPost,
+    deleteGuestPost
 }
 
 export default logic

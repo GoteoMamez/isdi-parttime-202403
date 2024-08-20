@@ -46,3 +46,11 @@
     padding: 0 4vh;
     margin-top: -1.5vh;
 }
+
+.FromLocationPost,
+.ToLocationPost,
+.PostDate {
+    display: flex;
+    padding: 0 4vh;
+    padding-right: 9vh;
+}

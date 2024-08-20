@@ -1,5 +1,5 @@
 import View from "../../../../components/library/View";
-import Post from "./Post";
+import GuestPost from "./GuestPost";
 import './HostPostList.css'
 
 import logic from "../../../logic";
@@ -18,7 +18,7 @@ function GuestPostList({ refreshStamp }) {
 
     const loadPosts = () => {
         try {
-            logic.getHostPost()
+            logic.getGuestPost()
                 .then(posts => setPosts(posts.reverse()))
                 .catch((error) => {
                     console.error(error)
@@ -37,7 +37,7 @@ function GuestPostList({ refreshStamp }) {
     const handlePostDeleted = () => loadPosts()
 
     return <View tag="section" className='GuestPostList'>
-        {posts.map(post => <Post key={post.id} post={post} onPostDeleted={handlePostDeleted}></Post>)}
+        {posts.map(post => <GuestPost key={post.id} post={post} onPostDeleted={handlePostDeleted}></GuestPost>)}
     </View>
 }
 

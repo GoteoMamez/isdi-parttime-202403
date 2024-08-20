@@ -13,7 +13,7 @@ const getGuestPost = () => {
 
         .catch(error => { throw new SystemError('server error') })
         .then(response => {
-            if (response === 200) {
+            if (response.status === 200) {
 
                 return response.json()
                     .catch(error => { throw new SystemError('server error') })

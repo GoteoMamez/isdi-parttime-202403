@@ -15,7 +15,7 @@ function Home({ onUserLoggedOut }) {
     console.log('Home -> render')
 
     const [name, setName] = useState('')
-    const [view, setView] = useState('')
+    const [view, setView] = useState('HostPostList')
     const [postType, setPostType] = useState(null)
     const [postListRefreshStamp, setPostListRefreshStamp] = useState(0)
 
@@ -85,7 +85,6 @@ function Home({ onUserLoggedOut }) {
 
         <PostListBoardSelection></PostListBoardSelection>
         <View tag="main">
-            <HostPostList refreshStamp={postListRefreshStamp}></HostPostList>
             {view === 'postTypeSelection' && (
                 <PostTypeSelection onSelectType={handlePostTypeSelection}></PostTypeSelection>
             )}

@@ -1,5 +1,5 @@
 import View from "../../../../components/library/View";
-import Post from "./Post";
+import HostPost from "./HostPost";
 import './HostPostList.css'
 
 import logic from "../../../logic";
@@ -37,7 +37,7 @@ function HostPostList({ refreshStamp }) {
     const handlePostDeleted = () => loadPosts()
 
     return <View tag="section" className='HostPostList'>
-        {posts.map(post => <Post key={post.id} post={post} onPostDeleted={handlePostDeleted}></Post>)}
+        {posts.map(post => <HostPost key={post.id} post={post} onPostDeleted={handlePostDeleted}></HostPost>)}
     </View>
 }
 
