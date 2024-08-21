@@ -5,15 +5,14 @@ import HostPostList from "./HostPostList"
 
 import './PostListBoardSelection.css'
 
-function PostListBoardSelection({ refreshStamp }) {
-    const [view, setView] = useState('HostPostList')
+function PostListBoardSelection({ onViewChange }) {
 
     const handleGuestPostList = () => {
-        setView('GuestPostList')
+        onViewChange('GuestPostList')
     }
 
     const handleHostPostList = () => {
-        setView('HostPostList')
+        onViewChange('HostPostList')
     }
 
 
@@ -21,9 +20,6 @@ function PostListBoardSelection({ refreshStamp }) {
     return <div className="PostListBoardSelection">
         <Button className='HostBoardButton' onClick={handleHostPostList}>Hosts</Button>
         <Button className='GuestBoardButton' onClick={handleGuestPostList}>Guests</Button>
-
-        {view === 'GuestPostList' && <GuestPostList refreshStamp={refreshStamp} />}
-        {view === 'HostPostList' && <HostPostList refreshStamp={refreshStamp} />}
 
 
     </div>

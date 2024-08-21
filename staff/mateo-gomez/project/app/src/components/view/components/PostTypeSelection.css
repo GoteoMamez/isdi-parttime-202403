@@ -8,6 +8,8 @@
     position: fixed;
     width: 100%;
     top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
     background: black;
     width: 30rem;
     border-radius: 3rem;

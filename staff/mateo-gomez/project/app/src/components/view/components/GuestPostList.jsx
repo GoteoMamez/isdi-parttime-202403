@@ -1,11 +1,11 @@
 import View from "../../../../components/library/View";
 import GuestPost from "./GuestPost";
-import './HostPostList.css'
+import './GuestPostList.css'
 
 import logic from "../../../logic";
 import { useEffect, useState } from "react";
 
-function GuestPostList({ refreshStamp }) {
+function GuestPostList({ refreshStamp, onGuestPostDeleted }) {
     console.log('GuestPostList -> render')
 
     const [posts, setPosts] = useState([])
@@ -19,7 +19,7 @@ function GuestPostList({ refreshStamp }) {
     const loadPosts = () => {
         try {
             logic.getGuestPost()
-                .then(posts => setPosts(posts.reverse()))
+                .then(posts => setPosts(posts))
                 .catch((error) => {
                     console.error(error)
 
@@ -37,7 +37,7 @@ function GuestPostList({ refreshStamp }) {
     const handlePostDeleted = () => loadPosts()
 
     return <View tag="section" className='GuestPostList'>
-        {posts.map(post => <GuestPost key={post.id} post={post} onPostDeleted={handlePostDeleted}></GuestPost>)}
+        {posts.map(post => <GuestPost key={post.id} post={post} onGuestPostDeleted={handlePostDeleted}></GuestPost>)}
     </View>
 }
 

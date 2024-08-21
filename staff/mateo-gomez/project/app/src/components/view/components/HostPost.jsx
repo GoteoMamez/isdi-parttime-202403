@@ -15,7 +15,9 @@ function HostPost({ post, onHostPostDeleted }) {
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
-    const handleDeletePost = () => setShowConfirmDelete
+    const handleDeletePost = () => setShowConfirmDelete(true)
+
+    const cancelDeletePost = () => setShowConfirmDelete(false)
 
     const confirmDeletePost = () => {
         try {

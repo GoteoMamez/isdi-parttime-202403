@@ -9,6 +9,7 @@ import Footer from "./components/Footer"
 import CreatePostForm from "./components/CreatePostForm"
 import PostTypeSelection from "./components/PostTypeSelection"
 import HostPostList from "./components/HostPostList"
+import GuestPostList from "./components/GuestPostList"
 import PostListBoardSelection from "./components/PostListBoardSelection"
 
 function Home({ onUserLoggedOut }) {
@@ -45,8 +46,10 @@ function Home({ onUserLoggedOut }) {
     const handlePostCreated = () => {
         setPostListRefreshStamp(Date.now())
 
-        setView('')
+        setView('HostPostList')
     }
+
+
 
 
     useEffect(() => {
@@ -73,18 +76,28 @@ function Home({ onUserLoggedOut }) {
 
 
 
-    return <View>
+    return <View className='main'>
         <Header>
             <Heading className='ConnecttooTitle' level='2'>Connecttoo</Heading>
             <div className="HeaderRight" >
                 <Heading className='UserNameHeading' level='3'>{name}</Heading>
                 <Button className='Button LogoutButton' onClick={handleLogout}>Logout</Button>
+
+
             </div>
 
         </Header>
 
-        <PostListBoardSelection></PostListBoardSelection>
-        <View tag="main">
+        <PostListBoardSelection onViewChange={setView}></PostListBoardSelection>
+
+        <div className="PostList">
+            {view === 'GuestPostList' && <GuestPostList refreshStamp={postListRefreshStamp} />}
+            {view === 'HostPostList' && <HostPostList refreshStamp={postListRefreshStamp} />}
+
+        </div>
+
+
+        <div tag="main">
             {view === 'postTypeSelection' && (
                 <PostTypeSelection onSelectType={handlePostTypeSelection}></PostTypeSelection>
             )}
@@ -97,7 +110,7 @@ function Home({ onUserLoggedOut }) {
                 > </CreatePostForm>
             )}
 
-        </View>
+        </div>
         <Footer onCreatePostClick={handleCreatePostClick} className='Footer' >+</Footer>
     </View>
 }

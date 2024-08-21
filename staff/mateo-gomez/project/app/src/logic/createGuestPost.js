@@ -1,4 +1,4 @@
-import errors from "../../com/errors";
+import { SystemError } from "../../com/errors";
 import validate from "../../com/validate";
 
 const createGuestPost = (image, description, date, age, fromLocation, toLocation) => {

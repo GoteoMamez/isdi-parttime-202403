@@ -5,7 +5,7 @@ import './HostPostList.css'
 import logic from "../../../logic";
 import { useEffect, useState } from "react";
 
-function HostPostList({ refreshStamp }) {
+function HostPostList({ refreshStamp, onHostPostDeleted }) {
     console.log('HostPostList -> render')
 
     const [posts, setPosts] = useState([])
@@ -34,10 +34,11 @@ function HostPostList({ refreshStamp }) {
         }
     }
 
+
     const handlePostDeleted = () => loadPosts()
 
     return <View tag="section" className='HostPostList'>
-        {posts.map(post => <HostPost key={post.id} post={post} onPostDeleted={handlePostDeleted}></HostPost>)}
+        {posts.map(post => <HostPost key={post.id} post={post} onHostPostDeleted={handlePostDeleted}></HostPost>)}
     </View>
 }
 

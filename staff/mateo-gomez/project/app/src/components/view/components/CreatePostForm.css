@@ -2,6 +2,7 @@
 
 
 
+
 .CreatePostFormHeading {
     color: white;
     font-family: "Langar", system-ui;
@@ -14,6 +15,8 @@
 }
 
 .CreatePostForm {
-    background: red;
+    background: black;
     display: flex;
+    margin-top: 15vh;
+    margin-bottom: 17vh;
 }

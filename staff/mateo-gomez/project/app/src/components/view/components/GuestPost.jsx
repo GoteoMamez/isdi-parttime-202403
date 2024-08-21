@@ -5,7 +5,7 @@ import ConfirmDelete from "./ConfirmDelete"
 
 import logic from '../../../logic'
 
-
+import './GuestPost.css'
 import './Post.css'
 import { useState } from "react"
 
@@ -16,6 +16,8 @@ function GuestPost({ post, onGuestPostDeleted }) {
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
     const handleDeletePost = () => setShowConfirmDelete
+
+    const cancelDeletePost = () => setShowConfirmDelete(false)
 
     const confirmDeletePost = () => {
         try {
