@@ -29,11 +29,23 @@
     color: white;
 }
 
+.HostBoardButton:hover {
+    background-color: rgb(8, 65, 84);
+    border: 0.1vh solid rgb(9, 82, 106);
+    color: white
+}
+
 .GuestBoardButton {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    background: rgb(78, 145, 183);
+    background: rgb(72, 144, 186);
     color: white;
+}
+
+.GuestBoardButton:hover {
+    background-color: rgb(35, 105, 145);
+    border: 0.1vh solid rgb(40, 120, 166);
+    color: white
 }

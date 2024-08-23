@@ -23,7 +23,7 @@ const deleteHostPostHandler = (req, res, next) => {
                 }
             })
             .catch(error => {
-                if (error instanceof JsonWebTokenError || error instanceof TokenExpiredError) {
+                if (error instanceof jwt.JsonWebTokenError || error instanceof jwt.TokenExpiredError) {
                     res.status(500).json({ error: SystemError.name, message: error.message })
 
                 } else {

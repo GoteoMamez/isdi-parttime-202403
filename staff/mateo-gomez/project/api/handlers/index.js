@@ -7,6 +7,9 @@ import getHostPostsHandler from "./getHostPostHandler.js";
 import getGuestPostsHandler from "./getGuestPostHandler.js";
 import deleteHostPostHandler from "./deleteHostPostHandler.js";
 import deleteGuestPostHandler from "./deleteGuestPostHandler.js";
+import getUserProfileHandler from "./getUserProfileHandler.js";
+
+
 export {
     authenticateUserHandler,
     registerUserHandler,
@@ -16,7 +19,9 @@ export {
     getHostPostsHandler,
     getGuestPostsHandler,
     deleteHostPostHandler,
-    deleteGuestPostHandler
+    deleteGuestPostHandler,
+
+    getUserProfileHandler
 
 }
 

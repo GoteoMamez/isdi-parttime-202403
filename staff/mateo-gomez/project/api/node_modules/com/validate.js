@@ -6,6 +6,10 @@ const PASSWORD_REGEX = /^[\w-$%&=\[\]\{\}\<\>\(\)]{8,}$/
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const ID_REGEX = /^[0-9a-z]+$/
 const AGE_REGEX = /^(0|[1-9][0-9]?|1[01][0-9]|120)$/;
+const TWITTER_REGEX = /^https:\/\/(twitter\.com|x\.com)\/[a-zA-Z0-9_]{1,15}(\/status\/\d+)?(\?.*)?$/
+const INSTAGRAM_REGEX = /^https?:\/\/(www\.)?instagram\.com\/[A-Za-z0-9_\.]+\/?(\?.*)?$/
+const FACEBOOK_REGEX = /^https?:\/\/(www\.)?facebook\.com\/[A-Za-z0-9\.]+$/
+const YOUTUBE_REGEX = /^https?:\/\/(www\.)?youtube\.com\/(channel\/|user\/|c\/)[A-Za-z0-9_-]+$/
 
 
 
@@ -69,6 +73,30 @@ function validateAge(age, explain = 'age') {
 
 }
 
+function validateTwitterLink(url, explain = 'twitterUrl') {
+    if (typeof url !== 'string' || !TWITTER_REGEX.test(url)) {
+        throw new ContentError(`${explain} is not valid`)
+    }
+}
+
+function validateInstagramLink(url, explain = 'instagramUrl') {
+    if (typeof url !== 'string' || !INSTAGRAM_REGEX.test(url)) {
+        throw new ContentError(`${explain} is not valid`)
+    }
+}
+
+function validateFacebookLink(url, explain = 'facebookUrl') {
+    if (typeof url !== 'string' || !FACEBOOK_REGEX.test(url)) {
+        throw new ContentError(`${explain} is not valid`)
+    }
+}
+
+function validateYoutubeLink(url, explain = 'youtubeUrl') {
+    if (typeof url !== 'string' || !YOUTUBE_REGEX.test(url)) {
+        throw new ContentError(`${explain} is not valid`)
+    }
+}
+
 const validate = {
     name: validateName,
     surname: validateSurname,
@@ -80,7 +108,13 @@ const validate = {
     text: validateText,
     url: validateURL,
     id: validateId,
-    age: validateAge
+    age: validateAge,
+
+    twitterUrl: validateTwitterLink,
+    instagramUrl: validateInstagramLink,
+    facebookUrl: validateFacebookLink,
+    youtubeUrl: validateYoutubeLink
+
 }
 
 export default validate

@@ -11,6 +11,8 @@ import PostTypeSelection from "./components/PostTypeSelection"
 import HostPostList from "./components/HostPostList"
 import GuestPostList from "./components/GuestPostList"
 import PostListBoardSelection from "./components/PostListBoardSelection"
+import UserProfile from "./components/UserProfile"
+import getUserId from "../../logic/getUserId"
 
 function Home({ onUserLoggedOut }) {
     console.log('Home -> render')
@@ -19,6 +21,8 @@ function Home({ onUserLoggedOut }) {
     const [view, setView] = useState('HostPostList')
     const [postType, setPostType] = useState(null)
     const [postListRefreshStamp, setPostListRefreshStamp] = useState(0)
+    const [profileUserId, setProfileUserId] = useState(null)
+    const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false)
 
 
     const handleLogout = () => {
@@ -50,6 +54,19 @@ function Home({ onUserLoggedOut }) {
     }
 
 
+
+    const handleViewProfile = (userId) => {
+        const currentUserId = getUserId()
+
+        if (userId === currentUserId) {
+            setIsViewingOwnProfile(true)
+        } else {
+            setIsViewingOwnProfile(false)
+        }
+
+        setProfileUserId(userId)
+        setView('UserProfile')
+    }
 
 
     useEffect(() => {
@@ -110,8 +127,16 @@ function Home({ onUserLoggedOut }) {
                 > </CreatePostForm>
             )}
 
+            {view === 'UserProfile' && profileUserId && (
+                <UserProfile userId={profileUserId} isOwnProfile={isViewingOwnProfile}></UserProfile>
+            )}
+
         </div>
-        <Footer onCreatePostClick={handleCreatePostClick} className='Footer' >+</Footer>
+        <Footer
+            onCreatePostClick={handleCreatePostClick} className='Footer'
+            onViewProfileClick={() => handleViewProfile(getUserId())}
+        ></Footer>
+
     </View>
 }
 

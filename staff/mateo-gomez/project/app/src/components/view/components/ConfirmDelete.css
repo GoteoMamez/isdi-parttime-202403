@@ -1,3 +1,45 @@
 .ConfirmDeleteForm {
-    z-index: 110;
+    z-index: 1000;
+    position: fixed;
+    top: 20vh;
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 2rem;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+@media only screen and (max-width: 768px) {
+    .ConfirmDeleteForm {
+        width: 35vh;
+
+    }
+}
+
+.ConfirmDeleteOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.DeleteConfirmButton {
+    background-color: rgba(148, 3, 3, 0.672);
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+
+.DeleteConfirmButton:hover {
+    background-color: rgb(206, 37, 37);
+    transform: scale(1.05);
+    border: 0.1vh solid rgb(143, 23, 23);
+}
+
+.DeleteButtons {
+    display: flex;
 }

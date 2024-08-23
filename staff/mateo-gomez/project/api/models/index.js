@@ -6,5 +6,6 @@ import GuestPost from "./GuestPost.js";
 export {
     User,
     HostPost,
-    GuestPost
+    GuestPost,
+
 }

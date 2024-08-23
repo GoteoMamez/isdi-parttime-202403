@@ -2,6 +2,7 @@ import Text from "../../../../components/core/Text"
 import Image from "../../../../components/core/Image"
 import Button from "../../../../components/core/Button"
 import ConfirmDelete from "./ConfirmDelete"
+import ProfileLink from "../../../../components/core/ProfileLink"
 import { useState } from "react"
 
 import logic from "../../../logic"
@@ -40,9 +41,19 @@ function HostPost({ post, onHostPostDeleted }) {
         setShowConfirmDelete(false)
     }
 
+    const handleViewProfile = () => {
+        if (onViewProfileClick) {
+            onViewProfileClick(post.author.id)
+        }
+    }
+
+
     return <article className="Post">
 
-        <Text className='AuthorTitle'>{post.author.username}</Text>
+        <Text className='AuthorTitle'>
+            <ProfileLink onClick={handleViewProfile}>{post.author.username}</ProfileLink>
+        </Text>
+
         <Image className='PostImage' src={post.image}></Image>
 
         <div className="CityAgePost">

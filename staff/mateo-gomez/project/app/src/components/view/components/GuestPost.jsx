@@ -8,14 +8,16 @@ import logic from '../../../logic'
 import './GuestPost.css'
 import './Post.css'
 import { useState } from "react"
+import ProfileLink from "../../../../components/core/ProfileLink"
 
-function GuestPost({ post, onGuestPostDeleted }) {
+
+function GuestPost({ post, onGuestPostDeleted, onViewProfileClick }) {
     console.log('Post -> render')
     console.log(post)
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
-    const handleDeletePost = () => setShowConfirmDelete
+    const handleDeletePost = () => setShowConfirmDelete(true)
 
     const cancelDeletePost = () => setShowConfirmDelete(false)
 
@@ -40,10 +42,19 @@ function GuestPost({ post, onGuestPostDeleted }) {
         setShowConfirmDelete(false)
     }
 
+    const handleViewProfile = () => {
+        if (onViewProfileClick) {
+            onViewProfileClick(post.author.id)
+        }
+    }
+
 
     return <article className="Post">
 
-        <Text className='AuthorTitle'>{post.author.username}</Text>
+        <Text className='AuthorTitle'>
+            <ProfileLink onClick={handleViewProfile}>{post.author.username}</ProfileLink>
+        </Text>
+
         <Image className='PostImage' src={post.image}></Image>
 
         <div className="FromToLocation">
