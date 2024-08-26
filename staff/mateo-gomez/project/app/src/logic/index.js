@@ -10,6 +10,8 @@ import getGuestPost from "./getGuestPosts";
 import getUserId from "./getUserId";
 import deleteHostPost from "./deleteHostPost";
 import deleteGuestPost from "./deleteGuestPost";
+import getUserProfile from "./getUserProfile";
+import updateUserProfile from "./updateUserProfile";
 
 const logic = {
     registerUser,
@@ -23,7 +25,9 @@ const logic = {
     getGuestPost,
     getUserId,
     deleteHostPost,
-    deleteGuestPost
+    deleteGuestPost,
+    getUserProfile,
+    updateUserProfile
 }
 
 export default logic

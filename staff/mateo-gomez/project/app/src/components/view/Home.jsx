@@ -44,7 +44,7 @@ function Home({ onUserLoggedOut }) {
     }
 
     const handleCancelCreatePost = () => {
-        setView('')
+        setView('HostPostList')
     }
 
     const handlePostCreated = () => {
@@ -105,7 +105,9 @@ function Home({ onUserLoggedOut }) {
 
         </Header>
 
-        <PostListBoardSelection onViewChange={setView}></PostListBoardSelection>
+        {view !== 'UserProfile' && (
+            <PostListBoardSelection onViewChange={setView} />
+        )}
 
         <div className="PostList">
             {view === 'GuestPostList' && <GuestPostList refreshStamp={postListRefreshStamp} />}

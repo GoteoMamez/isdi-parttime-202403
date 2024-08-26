@@ -12,8 +12,10 @@ const getUserProfileHandler = (req, res, next) => {
             .then(payload => {
                 const { sub: userId } = payload
 
+                const requestingUserId = req.params.userId
+
                 try {
-                    logic.getUserProfile(userId)
+                    logic.getUserProfile(userId, requestingUserId)
                         .then(userProfile => res.json(userProfile))
                         .catch((error) => next(error))
 

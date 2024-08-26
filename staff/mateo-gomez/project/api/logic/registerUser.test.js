@@ -8,9 +8,9 @@ const { MONGODB_URL } = process.env
 mongoose.connect(MONGODB_URL)
     .then(() => {
         try {
-            registerUser('Luk', 'Dondc', 'eslovenoNba', 'lukadoncic7@nba.com', '123123123', '123123123', 'https://estaticos-cdn.prensaiberica.es/clip/83fd6f51-7e1d-46fc-a5f6-f4f834044e0f_16-9-discover-aspect-ratio_default_0.jpg', 'Soy Luka y me encantan los tatuajes, quiero conocer a nuevos profesionales y estoy encantado de acoger en mi humilde casa a quien lo necesite', ['https://estaticos-cdn.prensaiberica.es/clip/31537a05-e897-44f6-8664-f882233ad516_source-aspect-ratio_default_0.jpg', 'https://cdn.legalsport.net/wp-content/uploads/2023/01/GettyImages-1447300079.jpg', 'https://i.pinimg.com/originals/9b/00/0c/9b000cf4b81c28d16695e158f0468923.jpg', 'https://i.imgur.com/JGsxaQ2.jpg'], {
-                twitter: 'https://x.com/luka7doncic',
-                instagram: 'https://www.instagram.com/lukadoncic/',
+            registerUser('King', 'James', 'kingJames', 'kingjames23@nba2024.com', '123123123', '123123123', 'https://i.pinimg.com/736x/b3/75/eb/b375eb0669bf24903b625cd64777c88a.jpg', 'Soy Lebron y me encantan los tatuajes, quiero conocer a nuevos profesionales y estoy encantado de acoger en mi humilde casa a quien lo necesite', ['https://i.pinimg.com/736x/8d/a0/00/8da000895c8d35978e7c5a59405915a5.jpg', 'https://cdntattoofilter.com/tattoo/28357/l.jpg', 'https://i.pinimg.com/originals/9b/00/0c/9b000cf4b81c28d16695e158f0468923.jpg', 'https://cdn.shopify.com/s/files/1/0618/9642/5662/files/LeBron-Tat_large.jpg'], {
+                twitter: 'https://x.com/KingJames?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor',
+                instagram: 'https://www.instagram.com/kingjames/?hl=es',
                 facebook: '',
                 youtube: ''
             })

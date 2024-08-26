@@ -2,10 +2,10 @@ import registerUser from '../logic/registerUser.js'
 
 
 const registerUserHandler = (req, res, next) => {
-    const { name, surname, username, email, password, passwordRepeat } = req.body
+    const { name, surname, username, email, password, passwordRepeat, profileImage, description, galleryImages, socialLinks } = req.body
 
     try {
-        registerUser(name, surname, username, email, password, passwordRepeat)
+        registerUser(name, surname, username, email, password, passwordRepeat, profileImage, description, galleryImages, socialLinks)
             .then(() => res.status(201).send())
             .catch(error => {
                 next(error)
