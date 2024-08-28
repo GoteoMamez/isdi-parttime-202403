@@ -8,6 +8,7 @@ import getGuestPosts from "./getGuestPosts.js";
 import deleteHostPost from "./deleteHostPost.js";
 import deleteGuestPost from "./deleteGuestPost.js";
 import getUserProfile from "./getUserProfile.js";
+import updateUserProfile from "./updateUserProfile.js";
 
 const logic = {
     authenticateUser,
@@ -20,7 +21,8 @@ const logic = {
     deleteHostPost,
     deleteGuestPost,
 
-    getUserProfile
+    getUserProfile,
+    updateUserProfile
 }
 
 export default logic

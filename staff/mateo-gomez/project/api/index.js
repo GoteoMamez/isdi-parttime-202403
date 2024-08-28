@@ -2,7 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import { registerUserHandler, authenticateUserHandler, getUserNameHandler, createGuestPostHandler, createHostPostHandler, getHostPostsHandler, getGuestPostsHandler, deleteHostPostHandler, deleteGuestPostHandler, getUserProfileHandler } from './handlers/index.js'
+import { registerUserHandler, authenticateUserHandler, getUserNameHandler, createGuestPostHandler, createHostPostHandler, getHostPostsHandler, getGuestPostsHandler, deleteHostPostHandler, deleteGuestPostHandler, getUserProfileHandler, updateUserProfileHandler } from './handlers/index.js'
 
 
 const { MONGODB_URL, PORT } = process.env
@@ -38,6 +38,8 @@ mongoose.connect(MONGODB_URL)
         api.delete('/posts/guest/:postId', deleteGuestPostHandler)
 
         api.get('/users/:userId/profile', getUserProfileHandler)
+
+        api.patch('/users/:userId/update', jsonBodyParser, updateUserProfileHandler)
 
         api.listen(PORT, () => console.log(`API running on port ${PORT}`));
 

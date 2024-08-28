@@ -4,6 +4,7 @@ import jwt from '../util/jsonwebtoken-promised.js'
 import logic from '../logic/index.js'
 import { SystemError } from 'com/errors.js'
 
+
 const { JWT_SECRET } = process.env
 
 const getHostPostsHandler = (req, res, next) => {
@@ -26,11 +27,8 @@ const getHostPostsHandler = (req, res, next) => {
                 }
             })
             .catch(error => {
-                if (error instanceof JsonWebTokenError || error instanceof TokenExpiredError) {
-                    res.status(500).json({ error: SystemError.name, message: error.message })
 
-                } else
-                    next(error)
+                next(error)
             })
     } catch (error) {
         next(error)

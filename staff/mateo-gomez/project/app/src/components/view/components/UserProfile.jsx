@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import View from '../../../../components/library/View'
 import Image from '../../../../components/core/Image'
 import Text from '../../../../components/core/Text'
-import GalleryImagesEditor from './GalleryImagesEditor'
-import Field from '../../../../components/core/Field'
+
 
 import logic from '../../../logic/index'
 
 import './UserProfile.css'
 import Button from '../../../../components/core/Button'
+import UpdateUserProfileForm from './UpdateUserProfileForm'
 
 function UserProfile({ userId, isOwnProfile }) {
     const [user, setUser] = useState(null)
     const [isEditing, setIsEditing] = useState(false)
-    const [galleryImages, setGalleryImages] = useState([])
+
 
     useEffect(() => {
         if (userId) {
@@ -21,7 +21,6 @@ function UserProfile({ userId, isOwnProfile }) {
                 logic.getUserProfile(userId)
                     .then(user => {
                         setUser(user)
-                        setGalleryImages(user.galleryImages || [])
                     })
                     .catch((error) => {
                         console.error(error)
@@ -37,39 +36,11 @@ function UserProfile({ userId, isOwnProfile }) {
         return <Text>Loading user profile...</Text>;
     }
 
-    const handleAddImage = () => setGalleryImages([...galleryImages, ''])
-    const handleDeleteImage = (index) => setGalleryImages(galleryImages.filter((_, i) => i !== index))
-    const handleImageChange = (index, value) => {
-        const updatedImages = galleryImages.map((img, i) => (i === index ? value : img))
-        setGalleryImages(updatedImages)
-    }
+
 
     const handleEditToggle = () => setIsEditing(!isEditing)
 
-    const handleUpdateUserProfileForm = (event) => {
-        event.preventDefault()
 
-        const updates = {
-            username: event.target.username.value,
-            name: event.target.name.value,
-            surname: event.target.surname.value,
-            profileImage: event.target.profileImage.value,
-            description: event.target.description.value,
-            socialLinks: {
-                twitter: event.target.twitterUrl.value,
-                instagram: event.target.instagramUrl.value,
-                facebook: event.target.facebookUrl.value,
-                youtube: event.target.youtubeUrl.value,
-            },
-            galleryImages
-        }
-
-        logic.updateUserProfile(userId, updates)
-            .then(() => {
-                setIsEditing(false)
-            })
-            .catch(error => alert(error.message))
-    }
 
 
     const platformIcons = {
@@ -81,29 +52,7 @@ function UserProfile({ userId, isOwnProfile }) {
     return (
         <div className='UserProfile'>
             {isEditing ? (
-                <form onSubmit={handleUpdateUserProfileForm}>
-                    <div className='profileContainer'>
-                        <Field id="username" type="text" placeholder="Username">Username</Field>
-                        <Field id="name" type="text" placeholder="Name">Name</Field>
-                        <Field id="surname" type="text" placeholder="Surname">Surname</Field>
-                        <Field id="profileImage" type="text" placeholder="Profile Image URL">Profile Image URL</Field>
-                        <Field id="description" type="text" placeholder="Description">Description</Field>
-
-                        <Field id="twitterUrl" type="text" placeholder="Twitter URL">Twitter URL</Field>
-                        <Field id="instagramUrl" type="text" placeholder="Instagram URL">Instagram URL</Field>
-                        <Field id="facebookUrl" type="text" placeholder="Facebook URL">Facebook URL</Field>
-                        <Field id="youtubeUrl" type="text" placeholder="YouTube URL">YouTube URL</Field>
-
-                        <GalleryImagesEditor
-                            galleryImages={galleryImages}
-                            onAddImage={handleAddImage}
-                            onDeleteImage={handleDeleteImage}
-                            onImageChange={handleImageChange}
-                        />
-
-                        <button type="submit">Update Profile</button>
-                    </div>
-                </form>
+                <UpdateUserProfileForm onUpdateProfile={() => setIsEditing(false)}></UpdateUserProfileForm>
             ) : (
                 <div className='profileContainer'>
                     <div className='ProfileInfo'>

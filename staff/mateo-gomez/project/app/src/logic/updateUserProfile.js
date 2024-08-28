@@ -3,28 +3,29 @@ import validate from "com/validate"
 
 const updateUserProfile = (userId, updates) => {
     validate.id(userId, 'userId')
-
-    if (updates.username) validate.username(updates.username);
-    if (updates.email) validate.email(updates.email);
-    if (updates.name) validate.name(updates.name, "name");
-    if (updates.surname) validate.name(updates.surname, "surname");
-    if (updates.profileImage) validate.url(updates.profileImage, "profileImage");
-    if (updates.description) validate.text(updates.description, "description", 700);
-    if (updates.socialLinks) {
-        const { twitter, instagram, facebook, youtube } = updates.socialLinks;
-        if (twitter) validate.twitterUrl(twitter, "twitter");
-        if (instagram) validate.instagramUrl(instagram, "instagram");
-        if (facebook) validate.facebookUrl(facebook, "facebook");
-        if (youtube) validate.youtubeUrl(youtube, "youtube");
-    }
-
-    if (updates.galleryImages) {
-        if (!Array.isArray(updates.galleryImages)) {
-            throw new errors.ValidationError("galleryImages must be an array");
+    if (updates) {
+        if (updates.username) validate.username(updates.username);
+        if (updates.email) validate.email(updates.email);
+        if (updates.name) validate.name(updates.name, "name");
+        if (updates.surname) validate.name(updates.surname, "surname");
+        if (updates.profileImage) validate.url(updates.profileImage, "profileImage");
+        if (updates.description) validate.text(updates.description, "description", 700);
+        if (updates.socialLinks) {
+            const { twitter, instagram, facebook, youtube } = updates.socialLinks;
+            if (twitter) validate.twitterUrl(twitter, "twitter");
+            if (instagram) validate.instagramUrl(instagram, "instagram");
+            if (facebook) validate.facebookUrl(facebook, "facebook");
+            if (youtube) validate.youtubeUrl(youtube, "youtube");
         }
-        updates.galleryImages.forEach((image, index) => {
-            validate.url(image, `galleryImages[${index}]`);
-        });
+
+        if (updates.galleryImages) {
+            if (!Array.isArray(updates.galleryImages)) {
+                throw new SystemError('server error');
+            }
+            updates.galleryImages.forEach((image, index) => {
+                validate.url(image, `galleryImages[${index}]`);
+            });
+        }
     }
 
     return fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/update`, {
@@ -36,7 +37,7 @@ const updateUserProfile = (userId, updates) => {
         body: JSON.stringify(updates)
 
     })
-        .catch(error => { throw new SystemError('error server') })
+        .catch(error => { throw new SystemError('server error') })
         .then(response => {
             if (response.status === 200)
 

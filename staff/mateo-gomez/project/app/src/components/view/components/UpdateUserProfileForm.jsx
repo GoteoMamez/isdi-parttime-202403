@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import extractPayloadFromJWT from "../../../utils/extractPayloadFromJWT"
-import updateUserProfile from "../../../logic/index"
 import logic from "../../../logic"
+import Form from '../../../../components/core/Form'
+import Field from "../../../../components/core/Field"
+import GalleryImagesEditor from "./GalleryImagesEditor"
 
+import './UpdateUserProfileForm.css'
 
 function UpdateUserProfileForm({ onUpdateProfile }) {
     const [userId, setUserId] = useState(null)
+    const [galleryImages, setGalleryImages] = useState([])
 
 
     useEffect(() => {
@@ -26,18 +30,18 @@ function UpdateUserProfileForm({ onUpdateProfile }) {
 
         const target = event.target
 
-        username = target.username.value,
-            name = target.name.value,
-            surname = target.surname.value,
-            profileImage = target.profileImage.value,
-            description = target.description.value,
-            socialLinks = {
-                twitter: target.twitterUrl.value,
-                instagram: target.instagramUrl.value,
-                facebook: target.facebookUrl.value,
-                youtube: target.youtubeUrl.value
-            },
-            galleryImages = Array.from(target.querySelectorAll("input[name='galleryImage']")).map(input => input.value);
+        const username = target.username.value
+        const name = target.name.value
+        const surname = target.surname.value
+        const profileImage = target.profileImage.value
+        const description = target.description.value
+        const socialLinks = {
+            twitter: target.twitterUrl.value,
+            instagram: target.instagramUrl.value,
+            facebook: target.facebookUrl.value,
+            youtube: target.youtubeUrl.value
+        }
+        const galleryImages = Array.from(target.querySelectorAll("input[name='galleryImage']")).map(input => input.value);
 
         const updates = {
             username,
@@ -63,10 +67,17 @@ function UpdateUserProfileForm({ onUpdateProfile }) {
         }
     }
 
+    const handleAddImage = () => setGalleryImages([...galleryImages, ''])
+    const handleDeleteImage = (index) => setGalleryImages(galleryImages.filter((_, i) => i !== index))
+    const handleImageChange = (index, value) => {
+        const updatedImages = galleryImages.map((img, i) => (i === index ? value : img))
+        setGalleryImages(updatedImages)
+    }
+
 
     return (
-        <form onSubmit={handleUpdateUserProfileForm}>
-            <div className="profileContainer">
+        <Form onSubmit={handleUpdateUserProfileForm} className="profileContainerUpdateForm">
+            <div className="profileContainerUpdateForm">
                 <Field id="username" type="text" placeholder="Username">Username</Field>
                 <Field id="name" type="text" placeholder="Name">Name</Field>
                 <Field id="surname" type="text" placeholder="Surname">Surname</Field>
@@ -79,7 +90,7 @@ function UpdateUserProfileForm({ onUpdateProfile }) {
                 <Field id="youtubeUrl" type="text" placeholder="YouTube URL">YouTube URL</Field>
 
                 <GalleryImagesEditor
-                    galleryImages={formData.galleryImages}
+                    galleryImages={galleryImages}
                     onAddImage={handleAddImage}
                     onDeleteImage={handleDeleteImage}
                     onImageChange={handleImageChange}
@@ -87,7 +98,7 @@ function UpdateUserProfileForm({ onUpdateProfile }) {
 
                 <button type="submit">Update Profile</button>
             </div>
-        </form>
+        </Form>
 
     )
 }

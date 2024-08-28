@@ -1,0 +1,16 @@
+:global(.profileContainerUpdateForm) {
+    display: grid;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .profileContainerUpdateForm {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    }
+}
+
+@media (max-width: 767px) {
+    .profileContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

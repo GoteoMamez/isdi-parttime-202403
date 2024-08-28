@@ -8,6 +8,7 @@ import getGuestPostsHandler from "./getGuestPostHandler.js";
 import deleteHostPostHandler from "./deleteHostPostHandler.js";
 import deleteGuestPostHandler from "./deleteGuestPostHandler.js";
 import getUserProfileHandler from "./getUserProfileHandler.js";
+import updateUserProfileHandler from "./updateUserProfileHandler.js";
 
 
 export {
@@ -21,7 +22,8 @@ export {
     deleteHostPostHandler,
     deleteGuestPostHandler,
 
-    getUserProfileHandler
+    getUserProfileHandler,
+    updateUserProfileHandler
 
 }
 
