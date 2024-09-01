@@ -8,7 +8,7 @@ const ID_REGEX = /^[0-9a-z]+$/
 const AGE_REGEX = /^(0|[1-9][0-9]?|1[01][0-9]|120)$/;
 const TWITTER_REGEX = /^https:\/\/(twitter\.com|x\.com)\/[a-zA-Z0-9_]{1,15}(\/status\/\d+)?(\?.*)?$/
 const INSTAGRAM_REGEX = /^https?:\/\/(www\.)?instagram\.com\/[A-Za-z0-9_\.]+\/?(\?.*)?$/
-const FACEBOOK_REGEX = /^https?:\/\/(www\.)?facebook\.com\/[A-Za-z0-9\.]+$/
+const FACEBOOK_REGEX = /^https?:\/\/(www\.)?facebook\.com\/[A-Za-z0-9.]+(\?[A-Za-z0-9=&._-]*)?$/
 const YOUTUBE_REGEX = /^https?:\/\/(www\.)?youtube\.com\/(@|channel\/|user\/|c\/)[A-Za-z0-9_-]+$/
 
 

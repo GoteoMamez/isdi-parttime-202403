@@ -8,7 +8,7 @@ const { MONGODB_URL } = process.env
 mongoose.connect(MONGODB_URL)
     .then(() => {
         try {
-            updateUserProfile('66abba217a8e0896f686f9dc',
+            updateUserProfile('66cef359a4793936f374eb49',
                 {
                     profileImage: 'https://estaticos-cdn.prensaiberica.es/clip/e1df3d69-cea4-4c9a-aedf-1cda9fce2f49_alta-libre-aspect-ratio_default_0.jpg',
                     description: 'Soy Luka Doncic y me flipan los tatuajes',

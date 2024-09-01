@@ -9,6 +9,8 @@ import deleteHostPost from "./deleteHostPost.js";
 import deleteGuestPost from "./deleteGuestPost.js";
 import getUserProfile from "./getUserProfile.js";
 import updateUserProfile from "./updateUserProfile.js";
+import updateSocialLinks from "./updateSocialLinks.js";
+import updateGalleryImages from "./updateGalleryImages.js";
 
 const logic = {
     authenticateUser,
@@ -22,7 +24,10 @@ const logic = {
     deleteGuestPost,
 
     getUserProfile,
-    updateUserProfile
+    updateUserProfile,
+    updateSocialLinks,
+    updateGalleryImages,
+
 }
 
 export default logic

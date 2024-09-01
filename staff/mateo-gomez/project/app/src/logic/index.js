@@ -12,6 +12,8 @@ import deleteHostPost from "./deleteHostPost";
 import deleteGuestPost from "./deleteGuestPost";
 import getUserProfile from "./getUserProfile";
 import updateUserProfile from "./updateUserProfile";
+import updateSocialLinks from "./updateSocialLinks";
+import updateGalleryImages from "./updateGalleryImages";
 
 const logic = {
     registerUser,
@@ -27,7 +29,9 @@ const logic = {
     deleteHostPost,
     deleteGuestPost,
     getUserProfile,
-    updateUserProfile
+    updateUserProfile,
+    updateGalleryImages,
+    updateSocialLinks
 }
 
 export default logic

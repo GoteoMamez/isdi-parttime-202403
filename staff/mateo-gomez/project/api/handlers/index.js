@@ -9,6 +9,8 @@ import deleteHostPostHandler from "./deleteHostPostHandler.js";
 import deleteGuestPostHandler from "./deleteGuestPostHandler.js";
 import getUserProfileHandler from "./getUserProfileHandler.js";
 import updateUserProfileHandler from "./updateUserProfileHandler.js";
+import updateGalleryImageHandler from "./updateGalleryImageHandler.js";
+import updateSocialLinksHandler from "./updateSocialLinksHandler.js";
 
 
 export {
@@ -23,7 +25,9 @@ export {
     deleteGuestPostHandler,
 
     getUserProfileHandler,
-    updateUserProfileHandler
+    updateUserProfileHandler,
+    updateGalleryImageHandler,
+    updateSocialLinksHandler
 
 }
 

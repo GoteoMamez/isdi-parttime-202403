@@ -1,0 +1,1 @@
+curl -X PATCH http://localhost:9090/users/update/social-links -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmNlZjM1OWE0NzkzOTM2ZjM3NGViNDkiLCJpYXQiOjE3MjUwMzIzODYsImV4cCI6MTcyNTA0Njc4Nn0.rppc5iOHXhYf8kCdEsArFa2fVR72oRDD3tpMvEJc3n4" -H "Content-Type: application/json" -d '{ "socialLinks": {"instagram" : "https://www.instagram.com/lukadoncic7/"}}' -v

@@ -7,72 +7,60 @@ import GalleryImagesEditor from "./GalleryImagesEditor"
 
 import './UpdateUserProfileForm.css'
 
-function UpdateUserProfileForm({ onUpdateProfile }) {
-    const [userId, setUserId] = useState(null)
-    const [galleryImages, setGalleryImages] = useState([])
+function UpdateUserProfileForm() {
 
-
-    useEffect(() => {
-        let payload
-        try {
-            if (sessionStorage.token) {
-                payload = extractPayloadFromJWT(sessionStorage.token)
-                setUserId(payload.sub)
-            }
-
-        } catch (error) {
-            alert(error.message)
-        }
-    }, [])
 
     const handleUpdateUserProfileForm = (event) => {
         event.preventDefault()
 
         const target = event.target
 
-        const username = target.username.value
-        const name = target.name.value
-        const surname = target.surname.value
-        const profileImage = target.profileImage.value
-        const description = target.description.value
+        const updates = {
+            username: target.username.value,
+            name: target.name.value,
+            surname: target.surname.value,
+            profileImage: target.profileImage.value,
+            description: target.description.value,
+        }
+
         const socialLinks = {
             twitter: target.twitterUrl.value,
             instagram: target.instagramUrl.value,
             facebook: target.facebookUrl.value,
             youtube: target.youtubeUrl.value
         }
-        const galleryImages = Array.from(target.querySelectorAll("input[name='galleryImage']")).map(input => input.value);
-
-        const updates = {
-            username,
-            name,
-            surname,
-            profileImage,
-            description,
-            socialLinks,
-            galleryImages,
-        }
 
 
         try {
-            logic.updateUserProfile(userId, updates)
-                .then(() => {
-                    onUpdateProfile()
-                })
-                .catch((error) => {
-                    alert(error.message)
-                })
+            if (!Object.values(updates).every(field => field === null || field === '')) {
+                logic.updateUserProfile(updates)
+                    .then(() => {
+                        alert('usuario actualizado')
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                        alert(error.message)
+                    })
+            }
+
+            if (!Object.values(socialLinks).every(field => field === null || field === '')) {
+                logic.updateSocialLinks(socialLinks)
+                    .then(() => {
+                        alert('usuario actualizado')
+
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                        alert(error.message)
+                    })
+            }
+
+
         } catch (error) {
             alert(error.message)
         }
     }
 
-    const handleAddImage = () => setGalleryImages([...galleryImages, ''])
-    const handleDeleteImage = (index) => setGalleryImages(galleryImages.filter((_, i) => i !== index))
-    const handleImageChange = (index, value) => {
-        const updatedImages = galleryImages.map((img, i) => (i === index ? value : img))
-        setGalleryImages(updatedImages)
-    }
 
 
     return (
@@ -89,17 +77,12 @@ function UpdateUserProfileForm({ onUpdateProfile }) {
                 <Field id="facebookUrl" type="text" placeholder="Facebook URL">Facebook URL</Field>
                 <Field id="youtubeUrl" type="text" placeholder="YouTube URL">YouTube URL</Field>
 
-                <GalleryImagesEditor
-                    galleryImages={galleryImages}
-                    onAddImage={handleAddImage}
-                    onDeleteImage={handleDeleteImage}
-                    onImageChange={handleImageChange}
-                />
+
 
                 <button type="submit">Update Profile</button>
             </div>
         </Form>
-
     )
 }
+
 export default UpdateUserProfileForm
