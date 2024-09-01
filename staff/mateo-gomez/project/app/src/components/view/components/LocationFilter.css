@@ -1,0 +1,8 @@
+.CityFilter {
+    z-index: 10000;
+    color: white;
+    position: relative;
+    margin-left: 70%;
+    margin-top: 16vh;
+    font-family: "Langar", system-ui;
+}

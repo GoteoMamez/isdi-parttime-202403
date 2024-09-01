@@ -4,11 +4,14 @@ import './HostPostList.css'
 
 import logic from "../../../logic";
 import { useEffect, useState } from "react";
+import LocationFilter from "./LocationFilter";
 
 function HostPostList({ refreshStamp, onHostPostDeleted }) {
     console.log('HostPostList -> render')
 
     const [posts, setPosts] = useState([])
+    const [filteredPosts, setFilteredPosts] = useState([])
+    const [selectedCity, setSelectedCity] = useState('')
 
     useEffect(() => {
         console.log('HostPostList -> useEffect')
@@ -19,7 +22,10 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
     const loadPosts = () => {
         try {
             logic.getHostPost()
-                .then(posts => setPosts(posts.reverse()))
+                .then(posts => {
+                    setPosts(posts.reverse())
+                    setFilteredPosts(posts)
+                })
                 .catch((error) => {
                     console.error(error)
 
@@ -34,11 +40,22 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
         }
     }
 
+    const handleFilteredChange = (city) => {
+        setSelectedCity(city)
+        if (city === '') {
+            setFilteredPosts(posts)
+        } else {
+
+            setFilteredPosts(posts.filter(post => post.city === city))
+        }
+    };
+
 
     const handlePostDeleted = () => loadPosts()
 
     return <View tag="section" className='HostPostList'>
-        {posts.map(post => <HostPost key={post.id} post={post} onHostPostDeleted={handlePostDeleted}></HostPost>)}
+        <LocationFilter posts={posts} onFilteredChange={handleFilteredChange}></LocationFilter>
+        {filteredPosts.map(post => <HostPost key={post.id} post={post} onHostPostDeleted={handlePostDeleted}></HostPost>)}
     </View>
 }
 
