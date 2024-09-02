@@ -6,7 +6,7 @@
     top: 0;
     width: 100%;
     background: black;
-    z-index: 100;
+    z-index: 100000;
     padding-top: 1vh;
     padding-bottom: 2vh;
     height: 5vh;

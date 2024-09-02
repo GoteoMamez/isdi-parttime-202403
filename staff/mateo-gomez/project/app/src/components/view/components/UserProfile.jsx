@@ -40,9 +40,12 @@ function UserProfile({ userId, isOwnProfile }) {
     const handleUpdateGalleryImages = (event) => {
         event.preventDefault()
 
-        const target = event.target
+        const field = document.getElementById('newImage')
 
-        const newImage = target.galleryImages.value
+        const newImage = field.value
+
+        console.log(newImage)
+
 
         try {
             if (newImage) {
@@ -109,7 +112,7 @@ function UserProfile({ userId, isOwnProfile }) {
                     </div>
                     <Form onSubmit={handleUpdateGalleryImages} className='GalleryImageForm'>
                         <Field id="newImage" name="newImage" type='text' placeholder='Add new Image' value={newImage} ></Field>
-                        <Button type='button' onClick={handleUpdateGalleryImages} className='UpdateGalleryButton'>
+                        <Button className='UpdateGalleryButton'>
                             Save Gallery Images
                         </Button>
                     </Form>

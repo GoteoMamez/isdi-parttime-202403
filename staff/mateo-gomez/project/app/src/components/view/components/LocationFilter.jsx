@@ -26,14 +26,14 @@ function LocationFilter({ posts, onFilteredChange }) {
                 <span className="DropdownIcon">{isComponentOpen ? '▲' : '▼'}</span>
             </div>
             {isComponentOpen && (
-                <ul>
+                <ul className="LocationsList">
                     {locations.map((city, index) => (
                         <li
                             key={index}
                             className={selectedLocation === city ? 'selected' : ''}
                             onClick={() => handleLocationClick(city)}
                         >
-                            <Button>{city}</Button>
+                            <Button className='LocationButton'>{city}</Button>
                         </li>
                     ))}
                 </ul>

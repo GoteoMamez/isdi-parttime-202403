@@ -11,5 +11,5 @@
     box-sizing: content-box;
     padding-right: 5vh;
     padding-left: 1vh;
-    z-index: 100;
+    z-index: 100000;
 }

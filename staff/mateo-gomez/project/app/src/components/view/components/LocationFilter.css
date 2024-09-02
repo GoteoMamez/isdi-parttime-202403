@@ -5,4 +5,48 @@
     margin-left: 70%;
     margin-top: 16vh;
     font-family: "Langar", system-ui;
+    display: inline-block;
+}
+
+.LocationsList {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.381);
+    border: 1px solid #dddddd34;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.LocationsList li {
+    padding: 0px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.LocationsList li.selected {
+    background-color: #f0f0f082;
+}
+
+@media (max-width: 600px) {
+    .LocationsList {
+        max-width: 95vw;
+
+    }
+}
+
+.CityFilter .LocationsList li {
+    padding: 4px !important;
+    margin: 2px 0 !important;
+}
+
+.LocationButton {
+    padding: 0;
+    margin: 0;
 }
