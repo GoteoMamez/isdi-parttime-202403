@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node .",
-    "watch": "node --watch",
+    "watch": "node --watch .",
     "inspect": "node --inspect-brk",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha logic/*.spec.js",
     "test-inspect": "mocha --inspect-brk logic/*.spec.js",
     "test-coverage": "c8 --experimental-monocart --reporter=html --reporter=text mocha logic/*.spec.js"
   },

@@ -23,8 +23,8 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
         try {
             logic.getHostPost()
                 .then(posts => {
-                    setPosts(posts.reverse())
-                    setFilteredPosts(posts)
+                    setPosts(posts)
+                    setFilteredPosts(posts.reverse())
                 })
                 .catch((error) => {
                     console.error(error)

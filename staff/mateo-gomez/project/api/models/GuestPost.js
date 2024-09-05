@@ -22,7 +22,7 @@ const guestPost = new Schema({
     },
     date: {
         //TODO la fecha no es la fecha de publicación 
-        type: Date,
+        type: String,
         required: true
     },
     description: {

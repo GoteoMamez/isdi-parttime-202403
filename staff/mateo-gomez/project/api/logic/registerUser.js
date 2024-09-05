@@ -1,6 +1,6 @@
 import validate from "../../com/validate.js"
 import { User } from "../models/index.js"
-import { DuplicityError, SystemError } from "../../com/errors.js"
+import { DuplicityError, SystemError, ContentError } from "../../com/errors.js"
 import bcrypt from "bcryptjs"
 
 
@@ -15,10 +15,18 @@ const registerUser = (name, surname, username, email, password, passwordRepeat, 
     if (profileImage) validate.url(profileImage, 'profileImage')
     if (description) validate.text(description, 'description')
 
+    if (galleryImages && !Array.isArray(galleryImages)) {
+        throw new ContentError('galleryImages is not valid')
+    }
+
     if (Array.isArray(galleryImages)) {
         galleryImages.forEach((image, index) => {
             if (image) validate.url(image, `galleryImage[${index}]`)
         })
+    }
+
+    if (socialLinks && typeof socialLinks !== 'object') {
+        throw new ContentError('socialLinks is not valid')
     }
 
     if (socialLinks) {
@@ -57,7 +65,7 @@ const registerUser = (name, surname, username, email, password, passwordRepeat, 
                         }
                     }
 
-                    User.create(newUser)
+                    return User.create(newUser)
                         .catch(error => { throw new SystemError(error.message) })
                         .then(user => {
 

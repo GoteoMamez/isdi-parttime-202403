@@ -91,11 +91,12 @@ function Home({ onUserLoggedOut }) {
         }
     }, [])
 
+    const handleGoToHostPostList = () => setView('HostPostList')
 
 
     return <View className='main'>
         <Header>
-            <Heading className='ConnecttooTitle' level='2'>Connecttoo</Heading>
+            <Heading className='ConnecttooTitle' level='2'><a onClick={handleGoToHostPostList} className='ConnecttooButton'>Connecttoo</a></Heading>
             <div className="HeaderRight" >
                 <Heading className='UserNameHeading' level='3'>{name}</Heading>
                 <Button className='Button LogoutButton' onClick={handleLogout}>Logout</Button>

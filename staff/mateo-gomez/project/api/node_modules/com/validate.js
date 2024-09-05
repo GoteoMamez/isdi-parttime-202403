@@ -9,7 +9,7 @@ const AGE_REGEX = /^(0|[1-9][0-9]?|1[01][0-9]|120)$/;
 const TWITTER_REGEX = /^https:\/\/(twitter\.com|x\.com)\/[a-zA-Z0-9_]{1,15}(\/status\/\d+)?(\?.*)?$/
 const INSTAGRAM_REGEX = /^https?:\/\/(www\.)?instagram\.com\/[A-Za-z0-9_\.]+\/?(\?.*)?$/
 const FACEBOOK_REGEX = /^https?:\/\/(www\.)?facebook\.com\/[A-Za-z0-9.]+(\?[A-Za-z0-9=&._-]*)?$/
-const YOUTUBE_REGEX = /^https?:\/\/(www\.)?youtube\.com\/(@|channel\/|user\/|c\/)[A-Za-z0-9_-]+$/
+const YOUTUBE_REGEX = /^https:\/\/(www\.)?youtube\.com\/(channel\/|user\/|c\/)[A-Za-z0-9_-]+$|^https:\/\/(www\.)?youtube\.com\/@[\w.]+$/
 
 
 
@@ -35,7 +35,7 @@ function validatePassword(password) {
 
 function validatePasswordMatch(password, passwordRepeat) {
     if (password !== passwordRepeat) {
-        throw new MatchError('password don\'t match')
+        throw new MatchError('passwords don\'t match')
     }
 }
 
@@ -54,6 +54,8 @@ function validateText(text, explain = 'text', maxLength = Infinity) {
         throw new ContentError(`${explain} is not valid`)
     }
 }
+
+
 
 function validateURL(url, explain = 'url') {
     if (typeof url !== 'string' || !url.startsWith('http')) {

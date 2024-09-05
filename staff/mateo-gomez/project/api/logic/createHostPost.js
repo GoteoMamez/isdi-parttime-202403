@@ -2,10 +2,10 @@ import { User, HostPost } from '../models/index.js'
 import { NotFoundError, SystemError } from 'com/errors.js'
 import validate from 'com/validate.js'
 
-const createHostPost = (userId, image, description, city, age, offer) => {
+const createHostPost = (userId, image, city, offer, age, description) => {
     validate.id(userId)
     validate.url(image, 'image')
-    validate.text(description, 'desctiption', 360)
+    validate.text(description, 'description', 360)
     validate.text(city, 'city')
     validate.age(age, 'age', 3)
     validate.text(offer, 'offer', 50)
