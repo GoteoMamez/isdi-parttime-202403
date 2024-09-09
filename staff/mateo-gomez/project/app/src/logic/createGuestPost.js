@@ -1,11 +1,10 @@
 import { SystemError } from "../../com/errors";
 import validate from "../../com/validate";
 
-const createGuestPost = (image, description, date, age, fromLocation, toLocation) => {
+const createGuestPost = (image, fromLocation, toLocation, date, description) => {
     validate.url(image, 'image')
     validate.text(description, 'desctiption')
-    validate.text(date, 'city')
-    validate.text(age, 'age')
+    validate.text(date, 'date')
     validate.text(fromLocation, 'fromLocation')
     validate.text(toLocation, 'toLocation')
 
@@ -15,7 +14,7 @@ const createGuestPost = (image, description, date, age, fromLocation, toLocation
             Authorization: `Bearer ${sessionStorage.token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ image, description, date, age, fromLocation, toLocation })
+        body: JSON.stringify({ image, fromLocation, toLocation, date, description })
     })
         .catch(error => { throw new SystemError('server error') })
         .then(response => {

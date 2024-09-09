@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs'
 import { User } from '../models/index.js'
 import updateSocialLinks from './updateSocialLinks.js'
 import { ContentError } from 'com/errors.js'
+import validate from 'com/validate.js'
 
 const { MONGODB_URL_TEST } = process.env
 
@@ -54,7 +55,7 @@ describe('updateSocialLinks', () => {
     it("fails on invalid Twitter URL", () => {
         let errorThrown
         try {
-            validateTwitterLink('invalid-url')
+            validate.twitterUrl('invalid-url')
         } catch (error) {
             errorThrown = error
         } finally {
@@ -66,7 +67,7 @@ describe('updateSocialLinks', () => {
     it("fails on invalid Instagram URL", () => {
         let errorThrown
         try {
-            validateInstagramLink('invalid-url')
+            validate.instagramUrl('invalid-url')
         } catch (error) {
             errorThrown = error
         } finally {
@@ -79,7 +80,7 @@ describe('updateSocialLinks', () => {
     it("fails on invalid Facebook URL", () => {
         let errorThrown
         try {
-            validateFacebookLink('invalid-url')
+            validate.facebookUrl('invalid-url')
         } catch (error) {
             errorThrown = error
         } finally {
@@ -91,7 +92,7 @@ describe('updateSocialLinks', () => {
     it("fails on invalid YouTube URL", () => {
         let errorThrown
         try {
-            validateYoutubeLink('invalid-url')
+            validate.youtubeUrl('invalid-url')
         } catch (error) {
             errorThrown = error
         } finally {

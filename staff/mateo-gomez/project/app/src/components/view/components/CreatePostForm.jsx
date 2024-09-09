@@ -47,13 +47,12 @@ function CreatePostForm({ postType, onCancelCreatePostClick, onHostPostCreated, 
             const image = form.image.value
             const description = form.description.value
             const date = form.date.value
-            const age = form.age.value
             const fromLocation = form.fromLocation.value
             const toLocation = form.toLocation.value
 
 
             try {
-                logic.createGuestPost(image, description, date, age, fromLocation, toLocation)
+                logic.createGuestPost(image, fromLocation, toLocation, date, description)
                     .then(() => onGuestPostCreated())
                     .catch((error) => {
                         console.error(error)
@@ -87,7 +86,7 @@ function CreatePostForm({ postType, onCancelCreatePostClick, onHostPostCreated, 
                     <>
                         <Field type="text" id="image" placeholder="Image URL" required >Image</Field>
                         <Field type="text" id="description" placeholder="Description" required >Description</Field>
-                        <Field type="text" id="date" placeholder="Date" required >Date</Field>
+                        <Field type="date" id="date" placeholder="Date" required >Date</Field>
                         <Field type="text" id="age" placeholder="Age" required >Age</Field>
                         <Field type="text" id="fromLocation" placeholder="From Location" required >From Location</Field>
                         <Field type="text" id="toLocation" placeholder="To Location" required >To Location</Field>

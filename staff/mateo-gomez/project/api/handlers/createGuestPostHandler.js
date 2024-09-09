@@ -12,10 +12,10 @@ const createGuestPostHandler = (req, res, next) => {
             .then(payload => {
                 const { sub: userId } = payload
 
-                const { image, description, date, age, fromLocation, toLocation } = req.body
+                const { image, fromLocation, toLocation, date, description } = req.body
 
                 try {
-                    logic.createGuestPost(userId, image, description, date, age, fromLocation, toLocation)
+                    logic.createGuestPost(userId, image, fromLocation, toLocation, date, description)
                         .then(() => res.status(201).send())
                         .catch(error => next(error))
                 } catch (error) {

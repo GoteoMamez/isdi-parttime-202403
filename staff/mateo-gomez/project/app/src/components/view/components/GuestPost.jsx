@@ -62,7 +62,7 @@ function GuestPost({ post, onGuestPostDeleted, onViewProfileClick }) {
             <Text className='ToLocationPost'><b>To: </b>&nbsp;{post.toLocation}</Text>
         </div>
 
-        <Text className='PostDate'><b>Date: </b>&nbsp;{post.date}</Text>
+        <Text className='PostDate'><b>Date: </b>&nbsp;{new Date(post.date).toLocaleDateString()}</Text>
         <Text className='PostDescription'><b>Description:</b>&nbsp;{post.description}</Text>
 
         {post.author.id === logic.getUserId() && <Button className="DeleteButton" onClick={handleDeletePost}>Delete</Button>}
