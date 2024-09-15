@@ -8,20 +8,26 @@ import UpdateUserProfileForm from './UpdateUserProfileForm'
 import Field from '../../../../components/core/Field'
 import Form from '../../../../components/core/Form'
 
-function UserProfile({ userId, isOwnProfile }) {
+import { useParams } from 'react-router-dom'
+
+function UserProfile() {
+    const { userId } = useParams()
     const [user, setUser] = useState(null)
     const [galleryImages, setGalleryImages] = useState([])
     const [newImage, setNewImage] = useState('')
     const [isEditing, setIsEditing] = useState(false)
+    const [isOwnProfile, setIsOwnProfile] = useState(false)
+
+
 
     useEffect(() => {
         if (userId) {
             logic.getUserProfile(userId)
                 .then(user => {
                     setUser(user)
-                    setGalleryImages(user.galleryImages || [])
+
                 })
-                .catch((error) => {
+                .catch(error => {
                     console.error(error)
                     alert(error.message)
                 })
@@ -44,7 +50,7 @@ function UserProfile({ userId, isOwnProfile }) {
 
         const newImage = field.value
 
-        console.log(newImage)
+
 
 
         try {
@@ -79,7 +85,7 @@ function UserProfile({ userId, isOwnProfile }) {
 
     return (
         <div className='UserProfile'>
-            {isEditing ? (
+            {isEditing && isOwnProfile ? (
                 <UpdateUserProfileForm onUpdateProfile={() => setIsEditing(false)}></UpdateUserProfileForm>
             ) : (
                 <div className='profileContainer'>

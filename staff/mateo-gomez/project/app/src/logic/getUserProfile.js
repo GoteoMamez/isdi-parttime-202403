@@ -18,7 +18,7 @@ const getUserProfile = (userId) => {
             if (response.status === 200) {
                 return response.json()
                     .catch(() => { throw new SystemError('server error') })
-                    .then((userId) => userId)
+                    .then((user) => user)
             }
 
             return response.json()

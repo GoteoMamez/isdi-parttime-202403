@@ -6,6 +6,7 @@
     margin-top: 16vh;
     font-family: "Langar", system-ui;
     display: inline-block;
+    cursor: pointer;
 }
 
 .LocationsList {
@@ -22,6 +23,7 @@
     list-style-type: none;
     padding-left: 0;
     margin: 0;
+    cursor: pointer;
 }
 
 .LocationsList li {
@@ -30,9 +32,7 @@
     text-align: left;
 }
 
-.LocationsList li.selected {
-    background-color: #f0f0f082;
-}
+
 
 @media (max-width: 600px) {
     .LocationsList {
@@ -49,4 +49,9 @@
 .LocationButton {
     padding: 0;
     margin: 0;
+}
+
+.All {
+    background: black;
+    color: white;
 }

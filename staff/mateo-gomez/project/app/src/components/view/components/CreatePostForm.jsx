@@ -30,7 +30,7 @@ function CreatePostForm({ postType, onCancelCreatePostClick, onHostPostCreated, 
             const offer = form.offer.value
 
             try {
-                logic.createHostPost(image, description, city, age, offer)
+                logic.createHostPost(image, city, offer, age, description)
                     .then(() => onHostPostCreated())
                     .catch((error) => {
                         console.error(error)

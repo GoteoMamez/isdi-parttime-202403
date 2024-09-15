@@ -1,7 +1,15 @@
+import { Link } from 'react-router-dom'
 import './ProfileLink.css'
 
-function ProfileLink({ type, className, onClick, children }) {
-    return <button className={`ProfileLink ${className ? className : ''}`} type={type} onClick={onClick}>{children}</button>
+function ProfileLink({ userId, className, children }) {
+    return (
+        <Link
+            to={`/users/${userId}/profile`}
+            className={`ProfileLink ${className ? className : ''}`}
+        >
+            {children}
+        </Link>
+    )
 }
 
 export default ProfileLink

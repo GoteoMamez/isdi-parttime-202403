@@ -53,4 +53,12 @@
     display: flex;
     padding: 0 4vh;
     padding-right: 9vh;
+    margin-bottom: 0.7vh;
+    margin-top: 0.7vh;
+}
+
+.DeletePostButton {
+    margin: 0.5vh;
+    margin-left: 26vh;
+    width: 10vh;
 }

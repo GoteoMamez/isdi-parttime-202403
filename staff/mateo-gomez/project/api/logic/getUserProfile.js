@@ -6,6 +6,8 @@ const getUserProfile = (userId, requestingUserId) => {
     validate.id(userId, 'userId')
     validate.id(requestingUserId, 'requestingUserId')
 
+    requestingUserId = requestingUserId ? requestingUserId : userId
+
     return User.findById(userId).lean()
         .catch(error => { throw new SystemError(error.message) })
         .then(user => {
@@ -13,14 +15,27 @@ const getUserProfile = (userId, requestingUserId) => {
                 throw new NotFoundError('user not found')
 
             }
+            return User.findById(requestingUserId).lean()
+                .catch(error => { throw new SystemError(error.message) })
+                .then(requestingUser => {
+                    if (!requestingUser) {
+                        throw new NotFoundError('requesting user not found')
+                    }
 
-            if (userId !== requestingUserId) {
-                delete user.email
-                delete user.password
-            }
-            user.id = user._id.toString()
+                    delete user.email
+                    delete user.password
 
-            return user
+
+                    user.id = user._id.toString()
+
+                    return user
+                })
+
+
+
+        })
+        .catch(error => {
+            throw new SystemError(error.message)
         })
 }
 

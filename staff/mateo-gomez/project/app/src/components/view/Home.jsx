@@ -13,34 +13,30 @@ import GuestPostList from "./components/GuestPostList"
 import PostListBoardSelection from "./components/PostListBoardSelection"
 import UserProfile from "./components/UserProfile"
 import getUserId from "../../logic/getUserId"
+import { useNavigate } from "react-router-dom"
 
-function Home({ onUserLoggedOut }) {
+function Home({ setName, view = 'HostPostList', setView }) {
     console.log('Home -> render')
 
-    const [name, setName] = useState('')
-    const [view, setView] = useState('HostPostList')
+
     const [postType, setPostType] = useState(null)
     const [postListRefreshStamp, setPostListRefreshStamp] = useState(0)
     const [profileUserId, setProfileUserId] = useState(null)
     const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false)
+    const navigate = useNavigate()
 
 
-    const handleLogout = () => {
-        logic.logoutUser()
-
-        onUserLoggedOut()
-    }
 
 
-    const handleCreatePostClick = () => {
-        setView('postTypeSelection')
-    }
+
+
 
     const handlePostTypeSelection = (type) => {
         console.log('Post Type Selected', type)
         setPostType(type)
 
         setView('createPost')
+        setHomeView(null)
     }
 
     const handleCancelCreatePost = () => {
@@ -55,23 +51,12 @@ function Home({ onUserLoggedOut }) {
 
 
 
-    const handleViewProfile = (userId) => {
-        const currentUserId = getUserId()
-
-        if (userId === currentUserId) {
-            setIsViewingOwnProfile(true)
-        } else {
-            setIsViewingOwnProfile(false)
-        }
-
-        setProfileUserId(userId)
-        setView('UserProfile')
-    }
 
 
     useEffect(() => {
+
         try {
-            logic.getUserName(name)
+            logic.getUserName()
                 .then(name => {
                     console.log('Home -> setName')
 
@@ -89,22 +74,13 @@ function Home({ onUserLoggedOut }) {
 
             alert(error.message)
         }
-    }, [])
+    }, [view])
 
-    const handleGoToHostPostList = () => setView('HostPostList')
+
 
 
     return <View className='main'>
-        <Header>
-            <Heading className='ConnecttooTitle' level='2'><a onClick={handleGoToHostPostList} className='ConnecttooButton'>Connecttoo</a></Heading>
-            <div className="HeaderRight" >
-                <Heading className='UserNameHeading' level='3'>{name}</Heading>
-                <Button className='Button LogoutButton' onClick={handleLogout}>Logout</Button>
 
-
-            </div>
-
-        </Header>
 
         {view !== 'UserProfile' && (
             <PostListBoardSelection onViewChange={setView} />
@@ -130,15 +106,8 @@ function Home({ onUserLoggedOut }) {
                 > </CreatePostForm>
             )}
 
-            {view === 'UserProfile' && profileUserId && (
-                <UserProfile userId={profileUserId} isOwnProfile={isViewingOwnProfile}></UserProfile>
-            )}
 
         </div>
-        <Footer
-            onCreatePostClick={handleCreatePostClick} className='Footer'
-            onViewProfileClick={() => handleViewProfile(getUserId())}
-        ></Footer>
 
     </View>
 }

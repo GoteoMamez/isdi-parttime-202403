@@ -27,6 +27,13 @@ function LocationFilter({ posts, onFilteredChange }) {
             </div>
             {isComponentOpen && (
                 <ul className="LocationsList">
+                    <li
+                        className={!selectedLocation ? 'selected' : ''}
+                        onClick={() => handleLocationClick('')}
+                    >
+                        <Button className='LocationButton All'>All Cities</Button>
+
+                    </li>
                     {locations.map((city, index) => (
                         <li
                             key={index}

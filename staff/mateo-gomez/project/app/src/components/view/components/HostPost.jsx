@@ -4,17 +4,19 @@ import Button from "../../../../components/core/Button"
 import ConfirmDelete from "./ConfirmDelete"
 import ProfileLink from "../../../../components/core/ProfileLink"
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
 
 import logic from "../../../logic"
 
 
 import './Post.css'
 
-function HostPost({ post, onHostPostDeleted }) {
+function HostPost({ post, onHostPostDeleted, onViewProfileClick }) {
     console.log('Post -> render')
     console.log(post)
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
+    const navigate = useNavigate()
 
     const handleDeletePost = () => setShowConfirmDelete(true)
 
@@ -41,17 +43,18 @@ function HostPost({ post, onHostPostDeleted }) {
         setShowConfirmDelete(false)
     }
 
-    const handleViewProfile = () => {
-        if (onViewProfileClick) {
-            onViewProfileClick(post.author.id)
-        }
+    const handleViewProfile = (authorId) => {
+        console.log('Author ID:', authorId)
+        navigate(`/users/${authorId}/profile`)
     }
+
 
 
     return <article className="Post">
 
+
         <Text className='AuthorTitle'>
-            <ProfileLink onClick={handleViewProfile}>{post.author.username}</ProfileLink>
+            <ProfileLink onClick={() => handleViewProfile(post.author.id)}>{post.author.username}</ProfileLink>
         </Text>
 
         <Image className='PostImage' src={post.image}></Image>
@@ -64,7 +67,7 @@ function HostPost({ post, onHostPostDeleted }) {
         <Text className='PostOffer'><b>Offer:</b>&nbsp;{post.offer}</Text>
         <Text className='PostDescription'><b>Description:</b>&nbsp;{post.description}</Text>
 
-        {post.author.id === logic.getUserId() && <Button className="DeleteButton" onClick={handleDeletePost}>Delete</Button>}
+        {post.author.id === logic.getUserId() && <Button className='DeletePostButton' onClick={handleDeletePost}>Delete</Button>}
 
         {showConfirmDelete && (
             <ConfirmDelete

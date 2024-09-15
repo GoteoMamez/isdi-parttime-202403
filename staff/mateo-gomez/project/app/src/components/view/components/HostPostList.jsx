@@ -13,6 +13,7 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
     const [filteredPosts, setFilteredPosts] = useState([])
     const [selectedCity, setSelectedCity] = useState('')
 
+
     useEffect(() => {
         console.log('HostPostList -> useEffect')
 
@@ -52,6 +53,8 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
 
 
     const handlePostDeleted = () => loadPosts()
+
+
 
     return <View tag="section" className='HostPostList'>
         <LocationFilter posts={posts} onFilteredChange={handleFilteredChange}></LocationFilter>

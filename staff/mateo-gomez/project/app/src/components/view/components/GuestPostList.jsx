@@ -19,7 +19,7 @@ function GuestPostList({ refreshStamp, onGuestPostDeleted }) {
     const loadPosts = () => {
         try {
             logic.getGuestPost()
-                .then(posts => setPosts(posts))
+                .then(posts => setPosts(posts.reverse()))
                 .catch((error) => {
                     console.error(error)
 
