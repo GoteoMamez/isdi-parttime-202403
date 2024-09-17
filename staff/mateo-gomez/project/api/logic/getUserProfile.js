@@ -22,21 +22,19 @@ const getUserProfile = (userId, requestingUserId) => {
                         throw new NotFoundError('requesting user not found')
                     }
 
-                    delete user.email
-                    delete user.password
+                    delete requestingUser.email
+                    delete requestingUser.password
 
 
-                    user.id = user._id.toString()
+                    requestingUser.id = requestingUser._id.toString()
 
-                    return user
+                    return requestingUser
                 })
 
 
 
         })
-        .catch(error => {
-            throw new SystemError(error.message)
-        })
+
 }
 
 export default getUserProfile

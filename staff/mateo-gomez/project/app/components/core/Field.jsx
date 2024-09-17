@@ -1,12 +1,12 @@
 import Input from "./Input";
 import Label from "./Label";
 
-import './Field.css'
+//import './Field.css'
 
 function Field({ id, type, placeholder, children }) {
     return <div className="Field">
-        <Label className="Label" htmlFor={id}>{children}</Label>
-        <Input className="Input" id={id} type={type} placeholder={placeholder} ></Input>
+        <Label htmlFor={id}>{children}</Label>
+        <Input id={id} type={type} placeholder={placeholder} ></Input>
     </div>
 }
 

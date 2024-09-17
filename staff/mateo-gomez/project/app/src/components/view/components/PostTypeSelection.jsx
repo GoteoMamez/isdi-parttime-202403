@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Heading from "../../../../components/core/Heading";
 import Button from "../../../../components/core/Button";
-import './PostTypeSelection.css'
+
 
 function PostTypeSelection({ onSelectType }) {
     return <div className="PostTypeSelection">

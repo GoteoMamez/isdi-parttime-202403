@@ -1,5 +1,5 @@
 import Button from '../../../../components/core/Button'
-import './Footer.css'
+
 
 function Footer({ onCreatePostClick, onViewProfileClick }) {
     const handleCreatePostClick = () => onCreatePostClick()

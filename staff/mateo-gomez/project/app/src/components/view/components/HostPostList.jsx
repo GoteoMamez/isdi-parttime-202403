@@ -1,6 +1,6 @@
 import View from "../../../../components/library/View";
 import HostPost from "./HostPost";
-import './HostPostList.css'
+
 
 import logic from "../../../logic";
 import { useEffect, useState } from "react";

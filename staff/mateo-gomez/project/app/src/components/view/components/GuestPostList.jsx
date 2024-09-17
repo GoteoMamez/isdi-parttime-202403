@@ -1,6 +1,5 @@
 import View from "../../../../components/library/View";
 import GuestPost from "./GuestPost";
-import './GuestPostList.css'
 
 import logic from "../../../logic";
 import { useEffect, useState } from "react";

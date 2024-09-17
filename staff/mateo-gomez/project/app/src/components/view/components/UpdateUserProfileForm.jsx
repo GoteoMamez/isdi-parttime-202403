@@ -3,9 +3,9 @@ import extractPayloadFromJWT from "../../../utils/extractPayloadFromJWT"
 import logic from "../../../logic"
 import Form from '../../../../components/core/Form'
 import Field from "../../../../components/core/Field"
-import GalleryImagesEditor from "./GalleryImagesEditor"
 
-import './UpdateUserProfileForm.css'
+
+
 
 function UpdateUserProfileForm() {
 

@@ -5,8 +5,7 @@ import ConfirmDelete from "./ConfirmDelete"
 
 import logic from '../../../logic'
 
-import './GuestPost.css'
-import './Post.css'
+
 import { useState } from "react"
 import ProfileLink from "../../../../components/core/ProfileLink"
 

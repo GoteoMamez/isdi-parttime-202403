@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom'
 import logic from "../../../logic"
 
 
-import './Post.css'
-
 function HostPost({ post, onHostPostDeleted, onViewProfileClick }) {
     console.log('Post -> render')
     console.log(post)
@@ -54,7 +52,7 @@ function HostPost({ post, onHostPostDeleted, onViewProfileClick }) {
 
 
         <Text className='AuthorTitle'>
-            <ProfileLink onClick={() => handleViewProfile(post.author.id)}>{post.author.username}</ProfileLink>
+            <ProfileLink userId={post.author.id}>{post.author.username}</ProfileLink>
         </Text>
 
         <Image className='PostImage' src={post.image}></Image>

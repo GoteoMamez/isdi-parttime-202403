@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Button from "../../../../components/core/Button"
 
-import './LocationFilter.css'
+
 
 function LocationFilter({ posts, onFilteredChange }) {
     const [selectedLocation, setSelectedLocation] = useState('')

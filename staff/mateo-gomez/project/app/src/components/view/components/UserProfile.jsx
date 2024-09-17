@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Image from '../../../../components/core/Image'
 import Text from '../../../../components/core/Text'
 import logic from '../../../logic/index'
-import './UserProfile.css'
+
 import Button from '../../../../components/core/Button'
 import UpdateUserProfileForm from './UpdateUserProfileForm'
 import Field from '../../../../components/core/Field'
 import Form from '../../../../components/core/Form'
 
 import { useParams } from 'react-router-dom'
+import getUserId from '../../../logic/getUserId'
 
 function UserProfile() {
     const { userId } = useParams()
@@ -16,7 +17,7 @@ function UserProfile() {
     const [galleryImages, setGalleryImages] = useState([])
     const [newImage, setNewImage] = useState('')
     const [isEditing, setIsEditing] = useState(false)
-    const [isOwnProfile, setIsOwnProfile] = useState(false)
+    const [isOwnProfile, setIsOwnProfile] = useState(getUserId() === userId)
 
 
 

@@ -1,4 +1,4 @@
-import './Heading.css'
+//import './Heading.css'
 
 function Heading({ level, className, children }) {
     const Tag = `h${level}`

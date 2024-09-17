@@ -3,7 +3,7 @@ import Button from "../../../../components/core/Button"
 import GuestPostList from "./GuestPostList"
 import HostPostList from "./HostPostList"
 
-import './PostListBoardSelection.css'
+
 
 function PostListBoardSelection({ onViewChange }) {
 
