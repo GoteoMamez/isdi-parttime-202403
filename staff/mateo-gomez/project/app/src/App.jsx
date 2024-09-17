@@ -11,6 +11,8 @@ import Heading from '../components/core/Heading'
 import Button from '../components/core/Button'
 import Footer from './components/view/components/Footer'
 
+import Alert from './components/view/components/Alert'
+
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
   const [name, setName] = useState('')
   const [homeView, setHomeView] = useState(null)
   const navigate = useNavigate()
+
+  const [message, setMessage] = useState(null)
 
   const handleGoToRegister = () => setView('Register')
   const handleGoToLogin = () => setView('Login')
@@ -47,6 +51,10 @@ function App() {
   }
 
 
+  const handleAlertAccepted = () => setMessage(null)
+
+  const handleMessage = message => setMessage(message)
+
 
   return (
     <>
@@ -61,7 +69,7 @@ function App() {
 
       </Header>}
       <Routes>
-        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} /> : <Home setName={setName} view={homeView} setView={setHomeView} />} />
+        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} /> : <Home setName={setName} view={homeView} setView={setHomeView} onMessage={handleMessage} />} />
         <Route path="/register" element={<Register onUserRegistered={handleGoToLogin} />} />
 
         <Route path="/users/:userId/profile" element={<UserProfile />} />
@@ -71,11 +79,12 @@ function App() {
 
       </Routes>
 
-      <Footer
+      {logic.isUserLoggedIn() && <Footer
         onCreatePostClick={handleCreatePostClick} className='Footer'
         onViewProfileClick={() => handleViewProfile(logic.getUserId())}
-      ></Footer>
+      ></Footer>}
 
+      {message && <Alert message={message} onAccepted={handleAlertAccepted}></Alert>}
     </>
   )
 }

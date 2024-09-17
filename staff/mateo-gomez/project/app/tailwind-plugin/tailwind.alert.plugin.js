@@ -3,11 +3,11 @@ const plugin = require('tailwindcss/plugin')
 
 export default plugin(({ addComponents, addUtilities }) => {
     addComponents({
-        '.ConfirmDeleteForm': {
-            zIndex: '100000',
+        '.ConfirmAlertForm': {
+            zIndex: '1000',
             position: 'fixed',
             top: '20vh',
-            width: '50vh',
+            width: 'auto',
             display: 'flex',
             flexDirection: 'column',
             backgroundColor: 'white',
@@ -15,7 +15,7 @@ export default plugin(({ addComponents, addUtilities }) => {
             left: '50%',
             transform: 'translate(-50%)',
         },
-        '.ConfirmDeleteOverlay': {
+        '.ConfirmAlertOverlay': {
             position: 'fixed',
             top: '0',
             left: '0',
@@ -24,31 +24,32 @@ export default plugin(({ addComponents, addUtilities }) => {
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
             zIndex: '1000',
         },
-        '.DeleteConfirmButton': {
-            backgroundColor: 'rgba(148, 3, 3, 0.672)',
-            transitionProperty: 'background-color, transform',
-            transitionDuration: '0.3s',
-        },
-        '.DeleteButtons': {
-            display: 'flex',
-        },
-        '.ConfirmConfirmButton': {
+        '.AlertConfirmButton': {
             backgroundColor: 'rgb(39, 158, 212)',
             transitionProperty: 'background-color, transform',
             transitionDuration: '0.3s',
         },
+        '.AlertButtons': {
+            display: 'flex',
+            justifyContent: 'center',
+        },
+        '.ConfirmAlertText': {
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '1rem'
+        }
     })
 
     addUtilities({
-        '.ConfirmDeleteForm-mobile': {
+        '.ConfirmAlertForm-mobile': {
             '@media (max-width: 768px)': {
                 width: '35vh',
             },
         },
-        '.DeleteConfirmButton:hover': {
-            backgroundColor: 'rgb(206, 37, 37)',
+        '.AlertConfirmButton:hover': {
+            backgroundColor: 'rgb(66, 75, 255)',
             transform: 'scale(1.05)',
-            border: '0.1vh solid rgb(143, 23, 23)',
+            border: '0.1vh solid rgb(66, 0, 255)',
         },
     })
 })

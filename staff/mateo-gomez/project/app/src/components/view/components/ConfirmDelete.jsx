@@ -1,7 +1,7 @@
 import Button from '../../../../components/core/Button'
 import Text from '../../../../components/core/Text'
 
-import './ConfirmDelete.css'
+
 
 function ConfirmDelete({ onConfirmDeletePost, onCancelDeletePost }) {
     return (

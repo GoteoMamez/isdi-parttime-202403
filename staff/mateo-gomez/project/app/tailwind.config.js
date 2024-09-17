@@ -20,6 +20,7 @@ import PostListBoardSelection from './tailwind-plugin/tailwind.postListBoardSele
 import updateUserProfileStyle from './tailwind-plugin/tailwind.updateUserProfileForm.plugin'
 import userProfileStyle from './tailwind-plugin/tailwind.userProfile.plugin'
 import postTypeSelection from './tailwind-plugin/tailwind.postTypeSelection.plugin'
+import AlertStyle from './tailwind-plugin/tailwind.alert.plugin'
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -51,5 +52,6 @@ export default {
     PostListBoardSelection,
     updateUserProfileStyle,
     userProfileStyle,
-    postTypeSelection],
+    postTypeSelection,
+    AlertStyle],
 }

@@ -15,7 +15,8 @@ import UserProfile from "./components/UserProfile"
 import getUserId from "../../logic/getUserId"
 import { useNavigate } from "react-router-dom"
 
-function Home({ setName, view = 'HostPostList', setView }) {
+
+function Home({ setName, view = 'HostPostList', setView, onMessage }) {
     console.log('Home -> render')
 
 
@@ -24,7 +25,6 @@ function Home({ setName, view = 'HostPostList', setView }) {
     const [profileUserId, setProfileUserId] = useState(null)
     const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false)
     const navigate = useNavigate()
-
 
 
 
@@ -65,7 +65,9 @@ function Home({ setName, view = 'HostPostList', setView }) {
                 .catch((error) => {
                     console.error(error)
 
-                    alert(error.message)
+                    //alert(error.message)
+
+                    onMessage(error.message)
                 })
 
 
@@ -75,7 +77,6 @@ function Home({ setName, view = 'HostPostList', setView }) {
             alert(error.message)
         }
     }, [view])
-
 
 
 
@@ -108,6 +109,7 @@ function Home({ setName, view = 'HostPostList', setView }) {
 
 
         </div>
+
 
     </View>
 }
