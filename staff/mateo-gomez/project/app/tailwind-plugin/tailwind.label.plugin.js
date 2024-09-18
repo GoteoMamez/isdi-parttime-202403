@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin')
 
 export default plugin(({ addComponents }) => {
     addComponents({
-        '.Label': {
+        'label': {
             color: 'white',
             fontFamily: '"Langar", system-ui',
             fontWeight: '400',

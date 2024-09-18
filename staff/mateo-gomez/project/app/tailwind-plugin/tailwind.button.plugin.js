@@ -36,6 +36,7 @@ export default plugin(({ addComponents }) => {
             alignItems: 'center',
             cursor: 'pointer',
             fontFamily: '"Langar", system-ui',
+            zIndex: '100000'
         },
         '.LogoutButton:hover': {
             backgroundColor: 'transparent',

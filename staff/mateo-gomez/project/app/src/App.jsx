@@ -20,14 +20,15 @@ function App() {
 
   const [view, setView] = useState(logic.isUserLoggedIn() ? 'Home' : 'Login')
   const [name, setName] = useState('')
-  const [homeView, setHomeView] = useState(null)
+  const [homeView, setHomeView] = useState('HostPostList')
   const navigate = useNavigate()
 
   const [message, setMessage] = useState(null)
 
-  const handleGoToRegister = () => setView('Register')
-  const handleGoToLogin = () => setView('Login')
-  const handleGoToHome = () => setView('Home')
+  const handleGoToRegister = () => navigate('/register')
+  const handleGoToLogin = () => { setView('Login'); navigate('/') }
+  const handleGoToHome = () => { setView('Home'); setHomeView('HostPostList'); navigate('/') }
+
 
 
 
@@ -69,8 +70,8 @@ function App() {
 
       </Header>}
       <Routes>
-        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} /> : <Home setName={setName} view={homeView} setView={setHomeView} onMessage={handleMessage} />} />
-        <Route path="/register" element={<Register onUserRegistered={handleGoToLogin} />} />
+        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} onRegisterLinkClick={handleGoToRegister} /> : <Home setName={setName} view={homeView} setView={setHomeView} onMessage={handleMessage} />} />
+        <Route path="/register" element={<Register onUserRegistered={handleGoToLogin} onLoginClick={handleGoToLogin} />} />
 
         <Route path="/users/:userId/profile" element={<UserProfile />} />
 

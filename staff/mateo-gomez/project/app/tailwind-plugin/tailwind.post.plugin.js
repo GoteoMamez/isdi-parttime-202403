@@ -18,6 +18,10 @@ export default plugin(({ addComponents }) => {
             overflow: 'hidden',
             height: '20vh',
             objectFit: 'cover',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+
         },
         '.AuthorTitle': {
             fontSize: '4vh',

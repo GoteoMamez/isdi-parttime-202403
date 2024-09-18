@@ -5,7 +5,7 @@ import Label from "./Label";
 
 function Field({ id, type, placeholder, children }) {
     return <div className="Field">
-        <Label htmlFor={id}>{children}</Label>
+        <Label className="Label" htmlFor={id}>{children}</Label>
         <Input id={id} type={type} placeholder={placeholder} ></Input>
     </div>
 }

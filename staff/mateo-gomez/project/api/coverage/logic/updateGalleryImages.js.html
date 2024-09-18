@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for logic/getHostPosts.js</title>
+    <title>Code coverage report for logic/updateGalleryImages.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">logic</a> getHostPosts.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">logic</a> updateGalleryImages.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>16/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
@@ -96,73 +96,82 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { NotFoundError, SystemError } from "com/errors.js"
-import { User, HostPost } from "../models/index.js"
-import validate from "com/validate.js"
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import validate from "com/validate.js";
+import { User } from "../models/index.js";
+import { MatchError, NotFoundError, SystemError } from "com/errors.js";
 &nbsp;
-const getHostPosts = (userId) =&gt; {
-    validate.id(userId, 'userId')
+const updateGalleryImages = (userId, newGalleryImages) =&gt; {
 &nbsp;
-    return User.findById(userId).lean()
-        .catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span> <span class="cstat-no" title="statement not covered" >throw new SystemError(error.message) </span>})
+    if (!Array.isArray(newGalleryImages)) {
+        throw new MatchError('galleryImages must be an array');
+    }
+&nbsp;
+    newGalleryImages.forEach((image, index) =&gt; {
+        validate.url(image, `galleryImages[${index}]`)
+    })
+    return User.findById(userId)
         .then(user =&gt; {
-            if (!user) {
-                throw new NotFoundError('user not found')
-            }
+            if (!user) <span class="branch-0 cbranch-no" title="branch not covered" >{ <span class="cstat-no" title="statement not covered" >throw new NotFoundError('User not found') </span>}</span>
 &nbsp;
-            return HostPost.find({}).populate('author', 'username').select('-__v').sort({ date: -1 }).lean()
-                .catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span> <span class="cstat-no" title="statement not covered" >throw new SystemError(error.message) </span>})
-                .then(posts =&gt; {
-                    posts.forEach(post =&gt; {
-                        post.id = post._id.toString()
-                        delete post._id
 &nbsp;
-                        if (post.author._id) {
-                            post.author.id = post.author._id.toString()
+            const currentGalleryImages = user.galleryImages || <span class="branch-1 cbranch-no" title="branch not covered" >[]</span>
 &nbsp;
-                            delete post.author._id
-                        }
-                    })
+            //nuevo array con las imagenes nuevas y antiguas 
+            const updatedGalleryImages = [...currentGalleryImages.filter(<span class="fstat-no" title="function not covered" >img =&gt; !</span>newGalleryImages.includes(img)), ...newGalleryImages]
 &nbsp;
-                    return posts
-                })
+            user.galleryImages = updatedGalleryImages
+            return user.save()
         })
+        .then(updatedUser =&gt; {
+            return updatedUser
+        })
+        .catch(<span class="fstat-no" title="function not covered" >error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            throw new SystemError(error.message)</span>
+        })
+&nbsp;
+&nbsp;
 }
 &nbsp;
-export default getHostPosts</pre></td></tr></table></pre>
+export default updateGalleryImages</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

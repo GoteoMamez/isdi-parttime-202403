@@ -15,9 +15,9 @@ User
 - Edit profile
 - Add photo
 - Add SocialMedia Link
-- View chats
-- Send message in chat
-- Choose location
+- View chats (v. 2.0)
+- Send message in chat (v 2.0)
+- Choose location 
 - View profile
 - View PostList
 - Delete Post
@@ -36,8 +36,8 @@ Guest
 #### Version 0.1
 Host/Guest
 
-- Add location with geo
-- API of ubications
+- Add location with geo (v 2.0)
+- API of ubications (v 2.0)
 
 
 ### UI Design
@@ -78,7 +78,7 @@ HostPost
 - image (string)
 - description (string)
 - location/city (string)
-- age (string)
+- age (string) //TODO comprobar que pasa con el age
 - offer (string)
 
  GuestPost
@@ -93,7 +93,7 @@ HostPost
 - age (string)
 
 
-
+ #### V 2.0 
 Chat 
 - id(auto)
 - users([User.id])

@@ -15,7 +15,7 @@ export default plugin(({ addComponents, theme, addBase }) => {
             display: 'flex',
             flexDirection: 'column',
             position: 'absolute',
-            padding: '2rem',
+            margin: '2rem',
             fontFamily: 'langar'
         },
         '.CreatePostFormHeading': {

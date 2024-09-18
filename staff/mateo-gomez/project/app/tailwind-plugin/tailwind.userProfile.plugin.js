@@ -21,14 +21,20 @@ export default plugin(({ addComponents }) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginLeft: '50%',
+            // marginLeft: '50%',
+            width: '100%',
+            justifyContent: 'center',
+            gridArea: '1 / 1 / 2 / 2',
         },
         '.ProfileInfo': {
-            display: 'flex',
+            display: 'grid',
+            gridTemplateColumns: '99vw 1vw',
+            gridTemplateRows: 'fit-content',
+            /*flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
             width: '100%',
-            margin: '0 auto',
+            margin: '0 auto',*/
         },
         '.ImageGalleryContainer': {
             display: 'grid !important',
@@ -41,8 +47,8 @@ export default plugin(({ addComponents }) => {
             objectFit: 'cover',
         },
         '.profileImage': {
-            width: '13vh',
-            height: '13vh',
+            width: '13vh !important',
+            height: '13vh !important',
             zIndex: '100000',
             display: 'flex',
             justifyContent: 'center',
@@ -70,9 +76,9 @@ export default plugin(({ addComponents }) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end',
-            marginLeft: 'auto',
-            marginRight: '5vh',
+
             height: 'auto',
+            gridArea: '1 / 2 / 2 / 3',
         },
         '.fa-brands': {
             color: 'white',

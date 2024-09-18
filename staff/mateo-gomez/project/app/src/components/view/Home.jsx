@@ -36,7 +36,7 @@ function Home({ setName, view = 'HostPostList', setView, onMessage }) {
         setPostType(type)
 
         setView('createPost')
-        setHomeView(null)
+        //setHomeView(null)
     }
 
     const handleCancelCreatePost = () => {
