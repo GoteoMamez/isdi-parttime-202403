@@ -15,12 +15,10 @@ export default plugin(({ addComponents }) => {
         },
         '.PostImage': {
             width: '95%',
-            overflow: 'hidden',
             height: '20vh',
             objectFit: 'cover',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            margin: '0 auto',
+            display: 'block',
 
         },
         '.AuthorTitle': {
@@ -33,7 +31,7 @@ export default plugin(({ addComponents }) => {
         '.CityAgePost': {
             display: 'flex',
             justifyContent: 'space-between',
-            padding: '0 4vh',
+            padding: '2vh 4vh',
             paddingRight: '9vh',
         },
         '.PostDescription': {
@@ -41,7 +39,7 @@ export default plugin(({ addComponents }) => {
             padding: '0 4vh',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            marginTop: '0',
+            margin: '1vh 0',
         },
         '.PostOffer': {
             display: 'flex',

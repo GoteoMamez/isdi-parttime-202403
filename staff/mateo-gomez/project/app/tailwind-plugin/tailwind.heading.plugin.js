@@ -7,7 +7,7 @@ export default plugin(({ addComponents, theme, addBase }) => {
             //'@apply font-luxurious-script': {},
             color: 'white',
             fontSize: '2.4rem',
-            fontFamily: 'luxurious-script',
+            fontFamily: 'Luxurious Script',
         },
         '.UserNameHeading': {
             //'@apply font-langar': {},
