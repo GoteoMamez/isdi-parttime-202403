@@ -31,9 +31,9 @@ function Home({ setName, view = 'HostPostList', setView, onMessage }) {
 
 
 
-    const handlePostTypeSelection = (type) => {
-        console.log('Post Type Selected', type)
-        setPostType(type)
+    const handlePostTypeSelection = (postTypeSelected) => {
+        console.log('Post Type Selected', postTypeSelected)
+        setPostType(postTypeSelected)
 
         setView('createPost')
         //setHomeView(null)
@@ -82,8 +82,7 @@ function Home({ setName, view = 'HostPostList', setView, onMessage }) {
 
     return <View className='main'>
 
-
-        {view !== 'UserProfile' && (
+        {(view !== 'createPost' && view !== 'postTypeSelection' && view !== 'UserProfile') && (
             <PostListBoardSelection onViewChange={setView} />
         )}
 

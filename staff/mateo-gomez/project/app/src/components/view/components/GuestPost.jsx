@@ -41,17 +41,15 @@ function GuestPost({ post, onGuestPostDeleted, onViewProfileClick }) {
         setShowConfirmDelete(false)
     }
 
-    const handleViewProfile = () => {
-        if (onViewProfileClick) {
-            onViewProfileClick(post.author.id)
-        }
+    const handleViewProfile = (authorId) => {
+        console.log('Author ID:', authorId)
+        navigate(`/users/${authorId}/profile`)
     }
-
 
     return <article className="Post">
 
         <Text className='AuthorTitle'>
-            <ProfileLink onClick={handleViewProfile}>{post.author.username}</ProfileLink>
+            <ProfileLink userId={post.author.id}>{post.author.username}</ProfileLink>
         </Text>
 
         <Image className='PostImage' src={post.image}></Image>

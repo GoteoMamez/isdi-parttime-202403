@@ -54,7 +54,11 @@ const updateUserProfile = (userId, updates) => {
                 })
         })
         .catch(error => {
-            throw new SystemError(error.message)
+            if (error instanceof NotFoundError) {
+                throw error // Mantén NotFoundError sin convertirlo a SystemError
+            } else {
+                throw new SystemError(error.message) // Solo convertir otros errores en SystemError
+            }
         })
 
 }
