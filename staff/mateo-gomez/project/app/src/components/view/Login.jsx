@@ -7,8 +7,13 @@ import Title from "../../../components/core/Title"
 import SubmitButton from "../../../components/core/SubmitButton"
 import Link from "../../../components/core/Link"
 
+import { useContext } from "react"
+import Context from "../../Context"
+
 function Login({ onUserLoggedIn, onRegisterLinkClick }) {
     console.log('Login -> render')
+
+    const { alert } = useContext(Context)
 
     const handleLoginSubmit = event => {
         event.preventDefault()
@@ -50,7 +55,7 @@ function Login({ onUserLoggedIn, onRegisterLinkClick }) {
             <SubmitButton className='LoginButton'>Login</SubmitButton>
         </FormWithFeedback>
 
-        <Link onClick={handleRegisterClick}>Register</Link>
+        <Link className='Link' onClick={handleRegisterClick}>Register</Link>
     </View>
 
 }

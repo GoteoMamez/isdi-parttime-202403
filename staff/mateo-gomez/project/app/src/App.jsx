@@ -13,6 +13,8 @@ import Footer from './components/view/components/Footer'
 
 import Alert from './components/view/components/Alert'
 
+import Context from './Context'
+
 
 
 function App() {
@@ -58,7 +60,7 @@ function App() {
 
 
   return (
-    <>
+    <Context.Provider value={{ alert: handleMessage }}>
       {logic.isUserLoggedIn() && <Header>
         <Heading className='ConnecttooTitle' level='2'><Link to='/' className='ConnecttooButton'>Connecttoo</Link></Heading>
         <div className="HeaderRight" >
@@ -70,7 +72,7 @@ function App() {
 
       </Header>}
       <Routes>
-        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} onRegisterLinkClick={handleGoToRegister} /> : <Home setName={setName} view={homeView} setView={setHomeView} onMessage={handleMessage} />} />
+        <Route path="/" element={view === 'Login' ? <Login onUserLoggedIn={handleGoToHome} onRegisterLinkClick={handleGoToRegister} /> : <Home setName={setName} view={homeView} setView={setHomeView} />} />
         <Route path="/register" element={<Register onUserRegistered={handleGoToLogin} onLoginClick={handleGoToLogin} />} />
 
         <Route path="/users/:userId/profile" element={<UserProfile />} />
@@ -86,7 +88,7 @@ function App() {
       ></Footer>}
 
       {message && <Alert message={message} onAccepted={handleAlertAccepted}></Alert>}
-    </>
+    </Context.Provider>
   )
 }
 

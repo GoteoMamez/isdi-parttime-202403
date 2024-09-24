@@ -10,7 +10,8 @@ export default plugin(({ addComponents }) => {
         '.View.column': {
             display: 'flex',
             flexDirection: 'column',
-            height: '100vh',
+            height: 'auto',
+            marginBottom: '3rem'
         },
     })
 })

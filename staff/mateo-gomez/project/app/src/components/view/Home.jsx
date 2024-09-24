@@ -15,9 +15,14 @@ import UserProfile from "./components/UserProfile"
 import getUserId from "../../logic/getUserId"
 import { useNavigate } from "react-router-dom"
 
+import { useContext } from "react"
+import Context from "../../Context"
 
-function Home({ setName, view = 'HostPostList', setView, onMessage }) {
+
+function Home({ setName, view = 'HostPostList', setView }) {
     console.log('Home -> render')
+
+    const { alert } = useContext(Context)
 
 
     const [postType, setPostType] = useState(null)
@@ -32,7 +37,6 @@ function Home({ setName, view = 'HostPostList', setView, onMessage }) {
 
 
     const handlePostTypeSelection = (postTypeSelected) => {
-        console.log('Post Type Selected', postTypeSelected)
         setPostType(postTypeSelected)
 
         setView('createPost')
@@ -58,16 +62,13 @@ function Home({ setName, view = 'HostPostList', setView, onMessage }) {
         try {
             logic.getUserName()
                 .then(name => {
-                    console.log('Home -> setName')
 
                     setName(name)
                 })
                 .catch((error) => {
                     console.error(error)
 
-                    //alert(error.message)
-
-                    onMessage(error.message)
+                    alert(error.message)
                 })
 
 

@@ -8,9 +8,13 @@ import Title from "../../../components/core/Title"
 import SubmitButton from "../../../components/core/SubmitButton"
 import Link from "../../../components/core/Link"
 
+import { useContext } from "react"
+import Context from "../../Context"
+
 function Register({ onLoginClick, onUserRegistered }) {
     const [message, setMessage] = useState('')
 
+    const { alert } = useContext(Context)
 
     const handleRegisterSubmit = event => {
         event.preventDefault()
@@ -31,13 +35,13 @@ function Register({ onLoginClick, onUserRegistered }) {
                 .catch(error => {
                     console.log(error)
 
-                    setMessage(error.message)
+                    alert(error.message)
                 })
 
         } catch (error) {
             console.error(error)
 
-            setMessage(error.message)
+            alert(error.message)
         }
 
     }
@@ -66,7 +70,7 @@ function Register({ onLoginClick, onUserRegistered }) {
 
         </FormWithFeedback>
 
-        <Link onClick={handleLoginClick}>Already have an account?
+        <Link className='Link' onClick={handleLoginClick}>Already have an account?
             Login now</Link>
 
     </View>

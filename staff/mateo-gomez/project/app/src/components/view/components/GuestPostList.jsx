@@ -4,13 +4,18 @@ import GuestPost from "./GuestPost";
 import logic from "../../../logic";
 import { useEffect, useState } from "react";
 
+import { useContext } from "react"
+import Context from "../../../Context"
+
 function GuestPostList({ refreshStamp, onGuestPostDeleted }) {
     console.log('GuestPostList -> render')
+
+    const { alert } = useContext(Context)
 
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        console.log('GuestPostList -> useEffect')
+
 
         loadPosts()
     }, [refreshStamp])

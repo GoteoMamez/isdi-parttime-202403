@@ -9,10 +9,14 @@ import logic from '../../../logic'
 import { useState } from "react"
 import ProfileLink from "../../../../components/core/ProfileLink"
 
+import { useContext } from "react"
+import Context from "../../../Context"
+
 
 function GuestPost({ post, onGuestPostDeleted, onViewProfileClick }) {
     console.log('Post -> render')
-    console.log(post)
+
+    const { alert } = useContext(Context)
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
 
@@ -42,7 +46,7 @@ function GuestPost({ post, onGuestPostDeleted, onViewProfileClick }) {
     }
 
     const handleViewProfile = (authorId) => {
-        console.log('Author ID:', authorId)
+
         navigate(`/users/${authorId}/profile`)
     }
 

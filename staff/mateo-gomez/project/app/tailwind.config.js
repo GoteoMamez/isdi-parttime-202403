@@ -21,6 +21,7 @@ import updateUserProfileStyle from './tailwind-plugin/tailwind.updateUserProfile
 import userProfileStyle from './tailwind-plugin/tailwind.userProfile.plugin'
 import postTypeSelection from './tailwind-plugin/tailwind.postTypeSelection.plugin'
 import AlertStyle from './tailwind-plugin/tailwind.alert.plugin'
+import LinkStyle from './tailwind-plugin/tailwind.link.plugin'
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -53,5 +54,6 @@ export default {
     updateUserProfileStyle,
     userProfileStyle,
     postTypeSelection,
-    AlertStyle],
+    AlertStyle,
+    LinkStyle],
 }

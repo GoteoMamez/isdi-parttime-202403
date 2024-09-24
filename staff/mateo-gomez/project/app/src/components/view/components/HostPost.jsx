@@ -6,12 +6,16 @@ import ProfileLink from "../../../../components/core/ProfileLink"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
+import { useContext } from "react"
+import Context from "../../../Context"
+
 import logic from "../../../logic"
 
 
 function HostPost({ post, onHostPostDeleted, onViewProfileClick }) {
     console.log('Post -> render')
-    console.log(post)
+
+    const { alert } = useContext(Context)
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false)
     const navigate = useNavigate()
@@ -42,7 +46,7 @@ function HostPost({ post, onHostPostDeleted, onViewProfileClick }) {
     }
 
     const handleViewProfile = (authorId) => {
-        console.log('Author ID:', authorId)
+
         navigate(`/users/${authorId}/profile`)
     }
 

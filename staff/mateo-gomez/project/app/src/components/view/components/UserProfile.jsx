@@ -11,7 +11,13 @@ import Form from '../../../../components/core/Form'
 import { useParams } from 'react-router-dom'
 import getUserId from '../../../logic/getUserId'
 
+import { useContext } from "react"
+import Context from "../../../Context"
+
 function UserProfile() {
+
+    const { alert } = useContext(Context)
+
     const { userId } = useParams()
     const [user, setUser] = useState(null)
     const [galleryImages, setGalleryImages] = useState([])

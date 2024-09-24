@@ -6,8 +6,13 @@ import logic from "../../../logic";
 import { useEffect, useState } from "react";
 import LocationFilter from "./LocationFilter";
 
+import { useContext } from "react"
+import Context from "../../../Context"
+
 function HostPostList({ refreshStamp, onHostPostDeleted }) {
     console.log('HostPostList -> render')
+
+    const { alert } = useContext(Context)
 
     const [posts, setPosts] = useState([])
     const [filteredPosts, setFilteredPosts] = useState([])
@@ -15,7 +20,7 @@ function HostPostList({ refreshStamp, onHostPostDeleted }) {
 
 
     useEffect(() => {
-        console.log('HostPostList -> useEffect')
+
 
         loadPosts()
     }, [refreshStamp])
