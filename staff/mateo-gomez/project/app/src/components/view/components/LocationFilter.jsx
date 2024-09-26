@@ -7,7 +7,7 @@ function LocationFilter({ posts, onFilteredChange }) {
     const [selectedLocation, setSelectedLocation] = useState('')
     const [isComponentOpen, setIsComponentOpen] = useState(false)
 
-    const locations = [...new Set(posts.map(post => post.city))]
+    const locations = [...new Set(posts.map(post => post.city))].sort((a, b) => a.localeCompare(b))
 
     const handleLocationClick = (city) => {
         setSelectedLocation(city)

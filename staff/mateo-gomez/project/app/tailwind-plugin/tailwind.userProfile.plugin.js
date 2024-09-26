@@ -79,6 +79,7 @@ export default plugin(({ addComponents }) => {
 
             height: 'auto',
             gridArea: '1 / 2 / 2 / 3',
+            paddingTop: '1.7rem'
         },
         '.fa-brands': {
             color: 'white',

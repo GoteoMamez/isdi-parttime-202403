@@ -3,12 +3,15 @@ import extractPayloadFromJWT from "../../../utils/extractPayloadFromJWT"
 import logic from "../../../logic"
 import Form from '../../../../components/core/Form'
 import Field from "../../../../components/core/Field"
+import Button from "../../../../components/core/Button"
 
-
+import { useContext } from "react"
+import Context from "../../../Context"
 
 
 function UpdateUserProfileForm() {
 
+    const { alert } = useContext(Context)
 
     const handleUpdateUserProfileForm = (event) => {
         event.preventDefault()
@@ -79,7 +82,7 @@ function UpdateUserProfileForm() {
 
 
 
-                <button type="submit">Update Profile</button>
+                <Button type="submit">Update Profile</Button>
             </div>
         </Form>
     )

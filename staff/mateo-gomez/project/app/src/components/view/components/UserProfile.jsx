@@ -19,13 +19,16 @@ function UserProfile() {
     const { alert } = useContext(Context)
 
     const { userId } = useParams()
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     const [galleryImages, setGalleryImages] = useState([])
     const [newImage, setNewImage] = useState('')
     const [isEditing, setIsEditing] = useState(false)
-    const [isOwnProfile, setIsOwnProfile] = useState(getUserId() === userId)
 
 
+    const loggedInUserId = getUserId()
+
+
+    const isOwnProfile = loggedInUserId === userId
 
     useEffect(() => {
         if (userId) {
@@ -65,7 +68,8 @@ function UserProfile() {
                 logic.updateGalleryImages([newImage])
                     .then(() => {
                         alert('Gallery images updated successfully')
-                        target.newImage.value = ''
+                        field.value = ''
+                        setNewImage('')
                     })
                     .catch((error) => {
                         console.error(error)
@@ -86,9 +90,6 @@ function UserProfile() {
         youtube: "fa-brands fa-youtube"
     }
 
-    if (!user) {
-        return <Text>Loading user profile...</Text>
-    }
 
     return (
         <div className='UserProfile'>
@@ -103,7 +104,11 @@ function UserProfile() {
                         </div>
 
                         <div className='SocialLinksContainer'>
-                            <Button onClick={handleEditToggle} className='EditProfileButton'>Edit Profile</Button>
+
+                            {isOwnProfile && (
+                                <Button onClick={handleEditToggle} className='EditProfileButton'>Edit Profile</Button>
+                            )}
+
                             {Object.entries(user.socialLinks || {}).map(([platform, link]) => (
                                 link && (
                                     <a key={platform} href={link} target="_blank" rel="noopener noreferrer" className='SocialLink'>
@@ -119,16 +124,25 @@ function UserProfile() {
                     </div>
 
                     <div className='ImageGalleryContainer'>
-                        {user.galleryImages && user.galleryImages.map((image, index) => (
+                        {user.galleryImages && user.galleryImages.reverse().map((image, index) => (
                             <Image key={index} className='GalleryImages' src={image} />
                         ))}
                     </div>
-                    <Form onSubmit={handleUpdateGalleryImages} className='GalleryImageForm'>
-                        <Field id="newImage" name="newImage" type='text' placeholder='Add new Image' value={newImage} ></Field>
-                        <Button className='UpdateGalleryButton'>
-                            Save Gallery Images
-                        </Button>
-                    </Form>
+                    {isOwnProfile && (
+                        <Form onSubmit={handleUpdateGalleryImages} className='GalleryImageForm'>
+                            <Field
+                                id="newImage"
+                                name="newImage"
+                                type='text'
+                                placeholder='Add new Image'
+                                value={newImage}
+                                onChange={(event) => setNewImage(event.target.value)}
+                            ></Field>
+                            <Button className='UpdateGalleryButton'>
+                                Save Gallery Images
+                            </Button>
+                        </Form>
+                    )}
                 </div>
             )}
         </div>

@@ -4,7 +4,7 @@ const plugin = require('tailwindcss/plugin')
 export default plugin(({ addComponents, addUtilities }) => {
     addComponents({
         '.ConfirmAlertForm': {
-            zIndex: '1000',
+            zIndex: '100000000',
             position: 'fixed',
             top: '20vh',
             width: 'auto',

@@ -23,20 +23,22 @@ function GuestPostList({ refreshStamp, onGuestPostDeleted }) {
     const loadPosts = () => {
         try {
             logic.getGuestPost()
-                .then(posts => setPosts(posts.reverse()))
+                .then(posts => {
+                    const now = new Date()
+                    const validPosts = posts.filter(post => new Date(post.date) >= now)
+
+                    setPosts(validPosts.reverse())
+                })
                 .catch((error) => {
                     console.error(error)
-
                     alert(error.message)
-
                     return
                 })
         } catch (error) {
             console.error(error)
-
             alert(error.message)
         }
-    }
+    };
 
     const handlePostDeleted = () => loadPosts()
 
